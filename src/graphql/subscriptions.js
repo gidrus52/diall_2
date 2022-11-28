@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCompany = /* GraphQL */ `
-  subscription OnCreateCompany {
-    onCreateCompany {
+  subscription OnCreateCompany($filter: ModelSubscriptionCompanyFilterInput) {
+    onCreateCompany(filter: $filter) {
       id
       name
       member {
@@ -27,8 +27,8 @@ export const onCreateCompany = /* GraphQL */ `
   }
 `;
 export const onUpdateCompany = /* GraphQL */ `
-  subscription OnUpdateCompany {
-    onUpdateCompany {
+  subscription OnUpdateCompany($filter: ModelSubscriptionCompanyFilterInput) {
+    onUpdateCompany(filter: $filter) {
       id
       name
       member {
@@ -52,8 +52,8 @@ export const onUpdateCompany = /* GraphQL */ `
   }
 `;
 export const onDeleteCompany = /* GraphQL */ `
-  subscription OnDeleteCompany {
-    onDeleteCompany {
+  subscription OnDeleteCompany($filter: ModelSubscriptionCompanyFilterInput) {
+    onDeleteCompany(filter: $filter) {
       id
       name
       member {
@@ -77,8 +77,8 @@ export const onDeleteCompany = /* GraphQL */ `
   }
 `;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
       id
       name
       tel
@@ -120,8 +120,8 @@ export const onCreateUser = /* GraphQL */ `
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
       id
       name
       tel
@@ -163,8 +163,8 @@ export const onUpdateUser = /* GraphQL */ `
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
       id
       name
       tel
@@ -206,8 +206,8 @@ export const onDeleteUser = /* GraphQL */ `
   }
 `;
 export const onCreateCategory = /* GraphQL */ `
-  subscription OnCreateCategory {
-    onCreateCategory {
+  subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+    onCreateCategory(filter: $filter) {
       id
       title
       tasks {
@@ -230,8 +230,8 @@ export const onCreateCategory = /* GraphQL */ `
   }
 `;
 export const onUpdateCategory = /* GraphQL */ `
-  subscription OnUpdateCategory {
-    onUpdateCategory {
+  subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+    onUpdateCategory(filter: $filter) {
       id
       title
       tasks {
@@ -254,8 +254,8 @@ export const onUpdateCategory = /* GraphQL */ `
   }
 `;
 export const onDeleteCategory = /* GraphQL */ `
-  subscription OnDeleteCategory {
-    onDeleteCategory {
+  subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
+    onDeleteCategory(filter: $filter) {
       id
       title
       tasks {
@@ -278,8 +278,8 @@ export const onDeleteCategory = /* GraphQL */ `
   }
 `;
 export const onCreateTask = /* GraphQL */ `
-  subscription OnCreateTask {
-    onCreateTask {
+  subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onCreateTask(filter: $filter) {
       id
       title
       text
@@ -306,8 +306,8 @@ export const onCreateTask = /* GraphQL */ `
   }
 `;
 export const onUpdateTask = /* GraphQL */ `
-  subscription OnUpdateTask {
-    onUpdateTask {
+  subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onUpdateTask(filter: $filter) {
       id
       title
       text
@@ -334,8 +334,8 @@ export const onUpdateTask = /* GraphQL */ `
   }
 `;
 export const onDeleteTask = /* GraphQL */ `
-  subscription OnDeleteTask {
-    onDeleteTask {
+  subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
+    onDeleteTask(filter: $filter) {
       id
       title
       text
@@ -362,8 +362,8 @@ export const onDeleteTask = /* GraphQL */ `
   }
 `;
 export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment {
-    onCreateComment {
+  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+    onCreateComment(filter: $filter) {
       id
       parent
       name
@@ -376,8 +376,8 @@ export const onCreateComment = /* GraphQL */ `
   }
 `;
 export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment {
-    onUpdateComment {
+  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+    onUpdateComment(filter: $filter) {
       id
       parent
       name
@@ -390,8 +390,8 @@ export const onUpdateComment = /* GraphQL */ `
   }
 `;
 export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment {
-    onDeleteComment {
+  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+    onDeleteComment(filter: $filter) {
       id
       parent
       name

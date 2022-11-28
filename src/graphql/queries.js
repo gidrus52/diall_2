@@ -250,3 +250,98 @@ export const listComments = /* GraphQL */ `
     }
   }
 `;
+export const tasksByCategory = /* GraphQL */ `
+  query TasksByCategory(
+    $category: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tasksByCategory(
+      category: $category
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        text
+        author
+        assigned
+        category
+        comment {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userTaskId
+      }
+      nextToken
+    }
+  }
+`;
+export const commentsByUserIDAndText = /* GraphQL */ `
+  query CommentsByUserIDAndText(
+    $userID: ID!
+    $text: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    commentsByUserIDAndText(
+      userID: $userID
+      text: $text
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        parent
+        name
+        text
+        userID
+        taskID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const commentsByTaskIDAndText = /* GraphQL */ `
+  query CommentsByTaskIDAndText(
+    $taskID: ID!
+    $text: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    commentsByTaskIDAndText(
+      taskID: $taskID
+      text: $text
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        parent
+        name
+        text
+        userID
+        taskID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

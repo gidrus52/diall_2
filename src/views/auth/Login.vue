@@ -22,7 +22,7 @@
           <div class="pa-7 pa-sm-12">
             <v-row>
               <v-col cols="12" lg="9" xl="6">
-                <v-img src="../../assets/images/lc_logo.svg"/>
+                <v-img src="../../assets/logo.png"/>
                 <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Sign in</h2>
 
 
