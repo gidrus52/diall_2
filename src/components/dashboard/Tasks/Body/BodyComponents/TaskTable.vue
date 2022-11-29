@@ -210,11 +210,13 @@
         async mounted() {
             this.listTask()
             this.listUser()
+            console.log(this)
         }
         ,
         created() {
             eventBus.$on('taskEvent', () => {
                 this.listTask()
+                console.log('taskevent')
             })
         }
     }

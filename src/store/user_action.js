@@ -27,6 +27,7 @@ export default {
             state.companysList = await data.data.listCompanies.items
         },
         SET_TASK_LIST: async (state, data) => {
+            console.log(data.data.listTasks.items)
             state.taskList = data.data.listTasks.items
         },
         SET_CATEGORY_LIST: (state, data) => {
@@ -47,7 +48,13 @@ export default {
             API.graphql((graphqlOperation(graphQlQueries.listCompanies))).then(async data => await commit('SET_COMPANY_LIST', data)).catch(err => console.log(err))
         },
         listTask: ({commit, dispatch}) => {
-            API.graphql((graphqlOperation(graphQlQueries.listTasks))).then(async data => await commit('SET_TASK_LIST', data)).catch(err => console.log(err))
+            console.log('listtask')
+            API.graphql((graphqlOperation(graphQlQueries.listTasks))).then(async data => {
+                console.log(data)
+                // dispatch('listTaskEvent')
+                await commit('SET_TASK_LIST', data)
+
+            }).catch(err => console.log(err))
         },
         listCategory: ({commit, dispatch}) => {
             API.graphql((graphqlOperation(graphQlQueries.listCategories))).then(async data => await commit('SET_CATEGORY_LIST', data)).catch(err => console.log(err))

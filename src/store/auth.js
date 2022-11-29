@@ -54,9 +54,11 @@ export default {
             await Auth.signOut().then().catch()
         },
         set_current_user: async ({commit, dispatch}, data) => {
+            console.log(data)
             commit("SET_CURRENT_USER", data)
         },
         setAdmin({commit, dispatch}, data) {
+            console.log(data)
             const compare_group = (name) => {
                 let compare = data.signInUserSession.idToken.payload['cognito:groups'].includes(name)
                 compare ? (commit('SET_ADMIN_CLAIM', {

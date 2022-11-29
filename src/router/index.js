@@ -25,6 +25,7 @@ router.beforeEach(async (to, from, next) => {
             next()
         } else {
             await Auth.currentUserPoolUser().then(data => {
+                console.log(data)
                 store.dispatch('set_current_user', data)
                 store.dispatch('setAdmin', data)
                 next()

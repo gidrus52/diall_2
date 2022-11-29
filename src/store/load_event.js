@@ -37,6 +37,7 @@ export default {
             }
         },
         dialog_end({dispatch}) {
+            console.log('end dialog')
             eventBus.$emit('dialog_end', {
                 dialog: false,
                 overlayDialog: false
