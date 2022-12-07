@@ -1,23 +1,18 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getCompany = /* GraphQL */ `
-  query GetCompany($id: ID!) {
-    getCompany(id: $id) {
+export const getDisplay = /* GraphQL */ `
+  query GetDisplay($id: ID!) {
+    getDisplay(id: $id) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
         }
         nextToken
       }
@@ -26,17 +21,104 @@ export const getCompany = /* GraphQL */ `
     }
   }
 `;
-export const listCompanies = /* GraphQL */ `
-  query ListCompanies(
-    $filter: ModelCompanyFilterInput
+export const listDisplays = /* GraphQL */ `
+  query ListDisplays(
+    $filter: ModelDisplayFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCompanies(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listDisplays(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
-        member {
+        project {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getProject = /* GraphQL */ `
+  query GetProject($id: ID!) {
+    getProject(id: $id) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listProjects = /* GraphQL */ `
+  query ListProjects(
+    $filter: ModelProjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        task {
+          nextToken
+        }
+        display
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTask = /* GraphQL */ `
+  query GetTask($id: ID!) {
+    getTask(id: $id) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTasks = /* GraphQL */ `
+  query ListTasks(
+    $filter: ModelTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        author
+        project
+        assigned {
           nextToken
         }
         createdAt
@@ -51,41 +133,9 @@ export const getUser = /* GraphQL */ `
     getUser(id: $id) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
+      task
       createdAt
       updatedAt
-      companyMemberId
     }
   }
 `;
@@ -99,62 +149,36 @@ export const listUsers = /* GraphQL */ `
       items {
         id
         name
-        tel
-        email
-        jobTitle
+        task
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const projectsByDisplay = /* GraphQL */ `
+  query ProjectsByDisplay(
+    $display: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelProjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    projectsByDisplay(
+      display: $display
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
         task {
           nextToken
         }
-        comment {
-          nextToken
-        }
-        companyID
-        companyName
-        createdAt
-        updatedAt
-        companyMemberId
-      }
-      nextToken
-    }
-  }
-`;
-export const getCategory = /* GraphQL */ `
-  query GetCategory($id: ID!) {
-    getCategory(id: $id) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listCategories = /* GraphQL */ `
-  query ListCategories(
-    $filter: ModelCategoryFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        tasks {
-          nextToken
-        }
+        display
         createdAt
         updatedAt
       }
@@ -162,104 +186,16 @@ export const listCategories = /* GraphQL */ `
     }
   }
 `;
-export const getTask = /* GraphQL */ `
-  query GetTask($id: ID!) {
-    getTask(id: $id) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const listTasks = /* GraphQL */ `
-  query ListTasks(
-    $filter: ModelTaskFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        text
-        author
-        assigned
-        category
-        comment {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userTaskId
-      }
-      nextToken
-    }
-  }
-`;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        parent
-        name
-        text
-        userID
-        taskID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const tasksByCategory = /* GraphQL */ `
-  query TasksByCategory(
-    $category: ID!
+export const tasksByProject = /* GraphQL */ `
+  query TasksByProject(
+    $project: ID!
     $sortDirection: ModelSortDirection
     $filter: ModelTaskFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    tasksByCategory(
-      category: $category
+    tasksByProject(
+      project: $project
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -268,33 +204,28 @@ export const tasksByCategory = /* GraphQL */ `
       items {
         id
         title
-        text
         author
-        assigned
-        category
-        comment {
+        project
+        assigned {
           nextToken
         }
         createdAt
         updatedAt
-        userTaskId
       }
       nextToken
     }
   }
 `;
-export const commentsByUserIDAndText = /* GraphQL */ `
-  query CommentsByUserIDAndText(
-    $userID: ID!
-    $text: ModelStringKeyConditionInput
+export const usersByTask = /* GraphQL */ `
+  query UsersByTask(
+    $task: ID!
     $sortDirection: ModelSortDirection
-    $filter: ModelCommentFilterInput
+    $filter: ModelUserFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    commentsByUserIDAndText(
-      userID: $userID
-      text: $text
+    usersByTask(
+      task: $task
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -302,42 +233,8 @@ export const commentsByUserIDAndText = /* GraphQL */ `
     ) {
       items {
         id
-        parent
         name
-        text
-        userID
-        taskID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const commentsByTaskIDAndText = /* GraphQL */ `
-  query CommentsByTaskIDAndText(
-    $taskID: ID!
-    $text: ModelStringKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    commentsByTaskIDAndText(
-      taskID: $taskID
-      text: $text
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        parent
-        name
-        text
-        userID
-        taskID
+        task
         createdAt
         updatedAt
       }

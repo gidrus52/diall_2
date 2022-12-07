@@ -1,12 +1,11 @@
 <template>
     <div>
-
         <taskBody/>
     </div>
 </template>
 
 <script>
-    import taskBody from '../../components/dashboard/Tasks/Body/TaskBody'
+    import taskBody from '../../components/dashboard/DiasplayBoards/Body/TaskBody'
 
     export default {
         name: "Task",

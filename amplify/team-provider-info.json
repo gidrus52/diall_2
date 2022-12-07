@@ -51,7 +51,8 @@
       "UnauthRoleName": "amplify-diall2-nextstep-105831-unauthRole",
       "StackName": "amplify-diall2-nextstep-105831",
       "StackId": "arn:aws:cloudformation:us-east-1:878358113668:stack/amplify-diall2-nextstep-105831/999197b0-6ef2-11ed-9fa6-0eab2c495a1b",
-      "AmplifyAppId": "d1rrgee6fmxj9n"
+      "AmplifyAppId": "d1rrgee6fmxj9n",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-diall2-nextstep-105831-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -60,9 +61,14 @@
       },
       "function": {
         "dial2authPostConfirmation": {
-          "GROUP": "User"
+          "GROUP": "User",
+          "deploymentBucketName": "amplify-diall2-nextstep-105831-deployment",
+          "s3Key": "amplify-builds/dial2authPostConfirmation-66696562496a726e4c58-build.zip"
         },
-        "AdminQueries3511ec95": {},
+        "AdminQueries3511ec95": {
+          "deploymentBucketName": "amplify-diall2-nextstep-105831-deployment",
+          "s3Key": "amplify-builds/AdminQueries3511ec95-34375465426d70746b6c-build.zip"
+        },
         "dial2auth": {}
       },
       "hosting": {
@@ -70,6 +76,10 @@
           "appId": "d1rrgee6fmxj9n",
           "type": "manual"
         }
+      },
+      "api": {
+        "AdminQueries": {},
+        "diall2": {}
       }
     }
   }

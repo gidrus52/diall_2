@@ -1,88 +1,50 @@
 <template>
+    <v-navigation-drawer
+            v-model="drawer"
+            app
 
+            right
+            width="600"
+            dark
+            fixed
+    >
+
+        <v-list-item style="height: 75px">
+            <v-list-item-avatar >
+                <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+                <v-list-item-title>John Leider</v-list-item-title>
+            </v-list-item-content>
+            <mdiRoundButton :name-icon="'mdi-close'" :property-data="propertyData"></mdiRoundButton>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
+    </v-navigation-drawer>
 </template>
 
 <script>
-    import pages from '../../constants/pages'
-    import {eventBus} from "../../main"
-    import Swal from "sweetalert2"
-
+    import mdiRoundButton from '../button/mdiRoundButton'
     export default {
-        name: "Head",
+        name: "DashboardDriveComponentRight",
         data: () => ({
-            navigate: {
-                routes: [
-                    {
-                        title: "Пользователи",
-                        group: '',
-                        name: pages.PAGE_NAME_USERS,
-                        access: ''
-                    },
-                    {
-                        title: "Задания",
-                        group: '',
-                        name: pages.PAGE_NAME_TASKS,
-                        access: ''
-                    },
-                    {
-                        title: "Категории",
-                        group: '',
-                        name: pages.PAGE_NAME_CATEGORY,
-                        access: ''
-                    },
-                    {
-                        title: "Выйти",
-                        group: '',
-                        name: pages.PAGE_NAME_LOGOUT,
-                        access: ''
-                    },
+            drawer: true,
+            propertyData: {
+                event: 'rightMenu'
 
-                ],
-                selectedItem: null,
             }
         }),
-        computed: {
-            navigations() {
-                return {routes: {...this.navigate.routes}, activeRoute: this.navigate.selectedItem}
-            }
+        components:{
+          mdiRoundButton
         },
+        computed: {},
         mounted() {
 
         },
         created() {
-            eventBus.$on('eventAllert', (data) => {
-                let type = data.eventAllert
-                let msg = ''
-                if (data.eventAllert === 'success') {
-                    if (data.eventType === 'user') {
-                        msg = 'Пользователь был успешно создан'
-                    }
-                    if (data.eventType === 'task') {
-                        msg = 'Задание успешно создано'
-                    }
-                    if (data.eventType === 'category') {
-                        msg = 'Категория успешно создана'
-                    }
-                } else {
-                    msg = data.eventMessage
-                }
 
-                Swal.fire({
-                    type: type,
-                    cancelButtonAriaLabel: false,
-                    width: "700px",
-                    showConfirmButton: false,
-                    showCloseButton: true,
-                    background: 'rgb(255,252,252)',
-                    position: "top-right",
-                    title: 'type',
-                    titleText: msg,
-                    heightAuto: false,
-                    customClass: {
-                        title: '.my-class'
-                    }
-                })
-            })
         }
     }
 </script>

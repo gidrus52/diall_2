@@ -44,6 +44,9 @@ export default {
             }).catch(err => console.log(err))
 
         },
+        listDisplay: async () => {
+            API.graphql((graphqlOperation(graphQlQueries.listDisplays))).then(async data => await commit('SET_DISPLAY_LIST', data)).catch(err => console.log(err))
+        },
         listCompany: async ({commit, dispatch}) => {
             API.graphql((graphqlOperation(graphQlQueries.listCompanies))).then(async data => await commit('SET_COMPANY_LIST', data)).catch(err => console.log(err))
         },

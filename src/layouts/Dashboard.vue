@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app >
         <DashboardDriveComponentLeft/>
         <DashboardBodyComponent/>
         <DashboardDriveComponentRight/>
@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import DashboardDriveComponentLeft from '../components/dashboard/Body'
-    import DashboardBodyComponent from '../components/dashboard/Body'
-    import DashboardDriveComponentRight from '../components/dashboard/Body'
+    import DashboardDriveComponentLeft from '../components/dashboard/DashboardDriveComponentLeft'
+    import DashboardBodyComponent from '../components/dashboard/DashboardBodyComponent'
+    import DashboardDriveComponentRight from '../components/dashboard/DashboardDriveComponentRight'
 
     export default {
         name: "Dashboard",

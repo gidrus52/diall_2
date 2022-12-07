@@ -2,6 +2,7 @@ import {queries} from '../constants/queries'
 import {API, graphqlOperation} from 'aws-amplify'
 import store from '../store/index'
 import * as mutations from '../graphql/mutations'
+import * as graphQlMutations from '../graphql/mutations'
 import * as graphQlQueries from "../graphql/queries";
 
 const findUsersData = async (fieldName, fieldEmail, arr) => {
@@ -85,7 +86,7 @@ export default {
             })
         },
         getUserNoCognito: async ({commit, dispatch}, userData) => {
-            API.graphql((graphqlOperation(graphQlQueries.getUser,{
+            API.graphql((graphqlOperation(graphQlQueries.getUser, {
                 id: userData.id
             })))
                 .then(async data => await commit('SET_USER_NOCOGNITO', data))
@@ -124,6 +125,16 @@ export default {
             }).then(data => {
 
             })
+        },
+        createDisplay: ({commit, dispatch}, data) => {
+            console.log(data)
+            API.graphql((graphqlOperation(graphQlMutations.createDisplay, {
+                input: {
+                    ...data
+                }
+            }))).then(data => {
+                console.log(data)
+            }).catch(err => console.log(err))
         },
         createTask: async ({commit, dispatch}, data) => {
             API.graphql((graphqlOperation(mutations.createTask, {

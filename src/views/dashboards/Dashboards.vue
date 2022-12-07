@@ -84,14 +84,15 @@
                 </v-card>
             </v-col>
         </v-row>
+        <Particles/>
     </div>
 </template>
 
 <script>
-
+    import Particles from '../../components/particles/particles'
     export default {
         name: "Dashboards",
-        components: {},
+        components: {Particles},
         data: () => {
             return {
                 valueDeterminate: 50,
@@ -139,7 +140,6 @@
         },
         methods: {
             setValue() {
-                console.log(this.valueDeterminate)
                 if (this.valueDeterminate < 100) {
                     this.valueDeterminate++
                     setTimeout(() => {

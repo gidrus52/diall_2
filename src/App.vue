@@ -11,6 +11,7 @@
 <script>
     import Layout from '@/layouts/Index'
 
+
     export default {
         name: 'App',
         data: () => {

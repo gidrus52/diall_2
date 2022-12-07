@@ -1,26 +1,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createCompany = /* GraphQL */ `
-  mutation CreateCompany(
-    $input: CreateCompanyInput!
-    $condition: ModelCompanyConditionInput
+export const createDisplay = /* GraphQL */ `
+  mutation CreateDisplay(
+    $input: CreateDisplayInput!
+    $condition: ModelDisplayConditionInput
   ) {
-    createCompany(input: $input, condition: $condition) {
+    createDisplay(input: $input, condition: $condition) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
         }
         nextToken
       }
@@ -29,26 +24,21 @@ export const createCompany = /* GraphQL */ `
     }
   }
 `;
-export const updateCompany = /* GraphQL */ `
-  mutation UpdateCompany(
-    $input: UpdateCompanyInput!
-    $condition: ModelCompanyConditionInput
+export const updateDisplay = /* GraphQL */ `
+  mutation UpdateDisplay(
+    $input: UpdateDisplayInput!
+    $condition: ModelDisplayConditionInput
   ) {
-    updateCompany(input: $input, condition: $condition) {
+    updateDisplay(input: $input, condition: $condition) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
         }
         nextToken
       }
@@ -57,26 +47,171 @@ export const updateCompany = /* GraphQL */ `
     }
   }
 `;
-export const deleteCompany = /* GraphQL */ `
-  mutation DeleteCompany(
-    $input: DeleteCompanyInput!
-    $condition: ModelCompanyConditionInput
+export const deleteDisplay = /* GraphQL */ `
+  mutation DeleteDisplay(
+    $input: DeleteDisplayInput!
+    $condition: ModelDisplayConditionInput
   ) {
-    deleteCompany(input: $input, condition: $condition) {
+    deleteDisplay(input: $input, condition: $condition) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createProject = /* GraphQL */ `
+  mutation CreateProject(
+    $input: CreateProjectInput!
+    $condition: ModelProjectConditionInput
+  ) {
+    createProject(input: $input, condition: $condition) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateProject = /* GraphQL */ `
+  mutation UpdateProject(
+    $input: UpdateProjectInput!
+    $condition: ModelProjectConditionInput
+  ) {
+    updateProject(input: $input, condition: $condition) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteProject = /* GraphQL */ `
+  mutation DeleteProject(
+    $input: DeleteProjectInput!
+    $condition: ModelProjectConditionInput
+  ) {
+    deleteProject(input: $input, condition: $condition) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTask = /* GraphQL */ `
+  mutation CreateTask(
+    $input: CreateTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    createTask(input: $input, condition: $condition) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTask = /* GraphQL */ `
+  mutation UpdateTask(
+    $input: UpdateTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    updateTask(input: $input, condition: $condition) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTask = /* GraphQL */ `
+  mutation DeleteTask(
+    $input: DeleteTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    deleteTask(input: $input, condition: $condition) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
         }
         nextToken
       }
@@ -93,41 +228,9 @@ export const createUser = /* GraphQL */ `
     createUser(input: $input, condition: $condition) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
+      task
       createdAt
       updatedAt
-      companyMemberId
     }
   }
 `;
@@ -139,41 +242,9 @@ export const updateUser = /* GraphQL */ `
     updateUser(input: $input, condition: $condition) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
+      task
       createdAt
       updatedAt
-      companyMemberId
     }
   }
 `;
@@ -185,264 +256,7 @@ export const deleteUser = /* GraphQL */ `
     deleteUser(input: $input, condition: $condition) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
-      createdAt
-      updatedAt
-      companyMemberId
-    }
-  }
-`;
-export const createCategory = /* GraphQL */ `
-  mutation CreateCategory(
-    $input: CreateCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    createCategory(input: $input, condition: $condition) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateCategory = /* GraphQL */ `
-  mutation UpdateCategory(
-    $input: UpdateCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    updateCategory(input: $input, condition: $condition) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteCategory = /* GraphQL */ `
-  mutation DeleteCategory(
-    $input: DeleteCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    deleteCategory(input: $input, condition: $condition) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createTask = /* GraphQL */ `
-  mutation CreateTask(
-    $input: CreateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    createTask(input: $input, condition: $condition) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const updateTask = /* GraphQL */ `
-  mutation UpdateTask(
-    $input: UpdateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    updateTask(input: $input, condition: $condition) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const deleteTask = /* GraphQL */ `
-  mutation DeleteTask(
-    $input: DeleteTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    deleteTask(input: $input, condition: $condition) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const createComment = /* GraphQL */ `
-  mutation CreateComment(
-    $input: CreateCommentInput!
-    $condition: ModelCommentConditionInput
-  ) {
-    createComment(input: $input, condition: $condition) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateComment = /* GraphQL */ `
-  mutation UpdateComment(
-    $input: UpdateCommentInput!
-    $condition: ModelCommentConditionInput
-  ) {
-    updateComment(input: $input, condition: $condition) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteComment = /* GraphQL */ `
-  mutation DeleteComment(
-    $input: DeleteCommentInput!
-    $condition: ModelCommentConditionInput
-  ) {
-    deleteComment(input: $input, condition: $condition) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
+      task
       createdAt
       updatedAt
     }

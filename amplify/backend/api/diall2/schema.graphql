@@ -3,45 +3,27 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 
-type Company @model {
+type Display @model {
   id: ID!
   name: String!
-  member: [User] @hasMany
+  project: [Project] @hasMany (indexName: "byDisplay", fields: ["id"])
+}
+type Project @model {
+  id: ID!
+  name: String!
+  task: [Task] @hasMany (indexName: "byProject", fields: ["id"])
+  display: ID! @index(name: "byDisplay")
+}
+type Task @model {
+  id: ID!
+  title: String!
+  author: String!
+  project: ID! @index(name: "byProject")
+  assigned: [User] @hasMany (indexName: "byTask", fields: ["id"])
 }
 
 type User @model {
   id: ID!
   name: String!
-  tel: String
-  email: String!
-  jobTitle: String!
-  task: [Task] @hasMany
-  comment: [Comment] @hasMany (indexName: "byUser", fields: ["id"])
-  companyID: ID
-  companyName: String
-}
-
-type Category @model {
-  id: ID!
-  title: String!
-  tasks: [Task] @hasMany (indexName: "byCategory", fields: ["id"])
-}
-
-type Task @model {
-  id: ID!
-  title: String!
-  text: String!
-  author: String!
-  assigned: [String]
-  category: ID! @index(name: "byCategory")
-  comment: [Comment] @hasMany (indexName: "byTask", fields: ["id"])
-}
-
-type Comment @model {
-  id: ID!
-  parent: String
-  name: String
-  text: String!
-  userID: ID! @index(name: "byUser", sortKeyFields: ["text"])
-  taskID:  ID!  @index(name: "byTask", sortKeyFields: ["text"])
+  task: ID @index(name: "byTask")
 }

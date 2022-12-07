@@ -42,7 +42,7 @@ export const routes = [
     {
         path: '/tasks',
         name: pages.PAGE_NAME_TASKS,
-        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Task'),
+        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Display'),
         meta: {
             requiresAuth: true,
             layout: layouts.LAYOUT_DASHBOARDS

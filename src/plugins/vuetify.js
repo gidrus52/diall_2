@@ -10,6 +10,7 @@ const theme = {
     success: "#06d79c",
     accent: "#ef5350",
     default: "#563dea",
+    whitebutton: "rgba(255,255,255)"
 };
 
 const opts = {

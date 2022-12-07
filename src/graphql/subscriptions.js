@@ -1,23 +1,18 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateCompany = /* GraphQL */ `
-  subscription OnCreateCompany($filter: ModelSubscriptionCompanyFilterInput) {
-    onCreateCompany(filter: $filter) {
+export const onCreateDisplay = /* GraphQL */ `
+  subscription OnCreateDisplay($filter: ModelSubscriptionDisplayFilterInput) {
+    onCreateDisplay(filter: $filter) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
         }
         nextToken
       }
@@ -26,23 +21,18 @@ export const onCreateCompany = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateCompany = /* GraphQL */ `
-  subscription OnUpdateCompany($filter: ModelSubscriptionCompanyFilterInput) {
-    onUpdateCompany(filter: $filter) {
+export const onUpdateDisplay = /* GraphQL */ `
+  subscription OnUpdateDisplay($filter: ModelSubscriptionDisplayFilterInput) {
+    onUpdateDisplay(filter: $filter) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
         }
         nextToken
       }
@@ -51,23 +41,150 @@ export const onUpdateCompany = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteCompany = /* GraphQL */ `
-  subscription OnDeleteCompany($filter: ModelSubscriptionCompanyFilterInput) {
-    onDeleteCompany(filter: $filter) {
+export const onDeleteDisplay = /* GraphQL */ `
+  subscription OnDeleteDisplay($filter: ModelSubscriptionDisplayFilterInput) {
+    onDeleteDisplay(filter: $filter) {
       id
       name
-      member {
+      project {
         items {
           id
           name
-          tel
-          email
-          jobTitle
-          companyID
-          companyName
+          display
           createdAt
           updatedAt
-          companyMemberId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateProject = /* GraphQL */ `
+  subscription OnCreateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onCreateProject(filter: $filter) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateProject = /* GraphQL */ `
+  subscription OnUpdateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onUpdateProject(filter: $filter) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteProject = /* GraphQL */ `
+  subscription OnDeleteProject($filter: ModelSubscriptionProjectFilterInput) {
+    onDeleteProject(filter: $filter) {
+      id
+      name
+      task {
+        items {
+          id
+          title
+          author
+          project
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      display
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTask = /* GraphQL */ `
+  subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onCreateTask(filter: $filter) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTask = /* GraphQL */ `
+  subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onUpdateTask(filter: $filter) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTask = /* GraphQL */ `
+  subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
+    onDeleteTask(filter: $filter) {
+      id
+      title
+      author
+      project
+      assigned {
+        items {
+          id
+          name
+          task
+          createdAt
+          updatedAt
         }
         nextToken
       }
@@ -81,41 +198,9 @@ export const onCreateUser = /* GraphQL */ `
     onCreateUser(filter: $filter) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
+      task
       createdAt
       updatedAt
-      companyMemberId
     }
   }
 `;
@@ -124,41 +209,9 @@ export const onUpdateUser = /* GraphQL */ `
     onUpdateUser(filter: $filter) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
+      task
       createdAt
       updatedAt
-      companyMemberId
     }
   }
 `;
@@ -167,237 +220,7 @@ export const onDeleteUser = /* GraphQL */ `
     onDeleteUser(filter: $filter) {
       id
       name
-      tel
-      email
-      jobTitle
-      task {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      companyID
-      companyName
-      createdAt
-      updatedAt
-      companyMemberId
-    }
-  }
-`;
-export const onCreateCategory = /* GraphQL */ `
-  subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
-    onCreateCategory(filter: $filter) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateCategory = /* GraphQL */ `
-  subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
-    onUpdateCategory(filter: $filter) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteCategory = /* GraphQL */ `
-  subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
-    onDeleteCategory(filter: $filter) {
-      id
-      title
-      tasks {
-        items {
-          id
-          title
-          text
-          author
-          assigned
-          category
-          createdAt
-          updatedAt
-          userTaskId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateTask = /* GraphQL */ `
-  subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
-    onCreateTask(filter: $filter) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const onUpdateTask = /* GraphQL */ `
-  subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
-    onUpdateTask(filter: $filter) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const onDeleteTask = /* GraphQL */ `
-  subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
-    onDeleteTask(filter: $filter) {
-      id
-      title
-      text
-      author
-      assigned
-      category
-      comment {
-        items {
-          id
-          parent
-          name
-          text
-          userID
-          taskID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      userTaskId
-    }
-  }
-`;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onCreateComment(filter: $filter) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onUpdateComment(filter: $filter) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-    onDeleteComment(filter: $filter) {
-      id
-      parent
-      name
-      text
-      userID
-      taskID
+      task
       createdAt
       updatedAt
     }
