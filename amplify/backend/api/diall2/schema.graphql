@@ -7,6 +7,8 @@ type Display @model {
   id: ID!
   name: String!
   project: [Project] @hasMany (indexName: "byDisplay", fields: ["id"])
+  type: String @index(name: "displayByDate", queryField: "displayByDate", sortKeyFields: ["createdAt"])
+  createdAt: String!
 }
 type Project @model {
   id: ID!

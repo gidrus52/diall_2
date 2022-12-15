@@ -30,7 +30,7 @@
                 <v-tabs align-with-title
                         v-model="currentTabNumber"
                 >
-                    <v-tab v-for="(item,index) in tabItems" :key="index" class="border">
+                    <v-tab v-for="(item,index) in displayItems" :key="index" class="border">
 
                         <span>{{item.name}}</span>
                         <template>
@@ -65,25 +65,27 @@
 
         >
             <div style="height: 100vh; background-color: blueviolet">
-                <createDialog :inputString="dialog_name.create_dialog_table.input_label" :titleString="dialog_name.create_dialog_table.title"/>
+                {{displays}}
+                <createDialog :inputString="dialog_name.create_dialog_table.input_label"
+                              :titleString="dialog_name.create_dialog_table.title"/>
             </div>
         </v-sheet>
-
     </div>
 </template>
 
 <script>
 
-    import basic_name from '../../../../constants/basic_name'
-    import {eventBus} from '../../../../main'
-    import {mapActions} from 'vuex'
-    import createDialog from '../../Dialog/Simple/Create'
+    import basic_name from '../../../constants/basic_name'
+    import {eventBus} from '../../../main'
+    import {mapActions, mapGetters} from 'vuex'
+    import createDialog from '../Dialog/Simple/Create'
 
     export default {
         name: "TaskBody",
         components: {createDialog},
         data() {
             return {
+                visual: false,
                 drawer: null,
                 items: [
                     {title: 'Home', icon: 'mdi-view-dashboard'},
@@ -94,28 +96,41 @@
                 tabItems: [
                     {name: 'default'},
                     {name: 'default'},
-                ]
+                ],
+                displayItems: []
             }
         },
         computed: {
-            targetTab() {
-                return this.currentTabNumber
+            ...mapGetters(['displayList']),
+            select_icon() {
+                return 'success'
             },
-            dialog_name(){
-                console.log(basic_name)
+            dialog_name() {
                 return basic_name
+            },
+            displays() {
+                this.displayItems = this.displayList
             }
         },
         methods: {
-            ...mapActions(['dialogStart']),
+            ...mapActions(['dialogStart', 'listDisplay']),
             addTable() {
                 console.log('bla')
                 eventBus.$emit('dialogStart')
+            },
+            sweetfdf() {
+                this.$swal('Hello Vue world!!!')
             }
         },
-        mounted(){
 
-                console.log(basic_name)
+        mounted() {
+            this.listDisplay()
+        },
+        created() {
+            eventBus.$on('success_create_display', () => {
+                console.log('success_create_display from taskbody')
+                this.listDisplay()
+            })
         }
 
     }

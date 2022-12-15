@@ -40,7 +40,7 @@ export const routes = [
         }
     },
     {
-        path: '/tasks',
+        path: '/display',
         name: pages.PAGE_NAME_TASKS,
         component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Display'),
         meta: {

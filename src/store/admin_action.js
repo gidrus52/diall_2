@@ -133,6 +133,7 @@ export default {
                     ...data
                 }
             }))).then(data => {
+                dispatch('create_event',{event: 'success_create_display'})
                 console.log(data)
             }).catch(err => console.log(err))
         },

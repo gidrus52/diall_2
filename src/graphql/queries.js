@@ -16,6 +16,7 @@ export const getDisplay = /* GraphQL */ `
         }
         nextToken
       }
+      type
       createdAt
       updatedAt
     }
@@ -34,6 +35,7 @@ export const listDisplays = /* GraphQL */ `
         project {
           nextToken
         }
+        type
         createdAt
         updatedAt
       }
@@ -150,6 +152,37 @@ export const listUsers = /* GraphQL */ `
         id
         name
         task
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const displayByDate = /* GraphQL */ `
+  query DisplayByDate(
+    $type: String!
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelDisplayFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    displayByDate(
+      type: $type
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        project {
+          nextToken
+        }
+        type
         createdAt
         updatedAt
       }

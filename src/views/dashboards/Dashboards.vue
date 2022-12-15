@@ -1,5 +1,5 @@
 <template>
-    <div class="ma-6">
+    <div class="">
         <v-progress-linear
                 v-model="valueDeterminate"
                 color="blue"
@@ -84,15 +84,14 @@
                 </v-card>
             </v-col>
         </v-row>
-        <Particles/>
+
     </div>
 </template>
 
 <script>
-    import Particles from '../../components/particles/particles'
     export default {
         name: "Dashboards",
-        components: {Particles},
+        components: {},
         data: () => {
             return {
                 valueDeterminate: 50,

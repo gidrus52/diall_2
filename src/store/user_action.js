@@ -9,7 +9,9 @@ export default {
         readyList: [],
         taskList: [],
         categoryList: [],
-        currentTask: {}
+        currentTask: {},
+        displayList: []
+
     },
     getters: {
         listUserGetter: state => state.usersList,
@@ -17,7 +19,8 @@ export default {
         listCategoryGetter: state => state.categoryList,
         listTaskGetter: state => state.taskList,
         currentTaskGetter: state => state.currentTask,
-        readyList: state => state.readyList
+        readyList: state => state.readyList,
+        displayList: state => state.displayList
     },
     mutations: {
         SET_USER_LIST: async (state, data) => {
@@ -25,6 +28,9 @@ export default {
         },
         SET_COMPANY_LIST: async (state, data) => {
             state.companysList = await data.data.listCompanies.items
+        },
+        SET_DISPLAY_LIST: async (state, data) => {
+            state.displayList = await data.data.listDisplays.items
         },
         SET_TASK_LIST: async (state, data) => {
             console.log(data.data.listTasks.items)
@@ -44,7 +50,7 @@ export default {
             }).catch(err => console.log(err))
 
         },
-        listDisplay: async () => {
+        listDisplay: async ({commit}) => {
             API.graphql((graphqlOperation(graphQlQueries.listDisplays))).then(async data => await commit('SET_DISPLAY_LIST', data)).catch(err => console.log(err))
         },
         listCompany: async ({commit, dispatch}) => {

@@ -1,8 +1,8 @@
 <template>
-    <v-app >
+    <v-app>
         <DashboardDriveComponentLeft/>
-        <DashboardBodyComponent/>
-        <DashboardDriveComponentRight/>
+        <DashboardDriveComponentRight v-if="$route.fullPath!='/'"/>
+            <DashboardBodyComponent/>
     </v-app>
 </template>
 
@@ -13,7 +13,7 @@
 
     export default {
         name: "Dashboard",
-        components: {DashboardDriveComponentLeft,DashboardBodyComponent,DashboardDriveComponentRight},
+        components: {DashboardDriveComponentLeft, DashboardBodyComponent, DashboardDriveComponentRight},
         data() {
             return {
                 drawer: null,
@@ -23,6 +23,11 @@
                 ],
             }
         },
+        computed:{
+            currentRoute(){
+                return this
+            }
+        }
     }
 </script>
 

@@ -19,6 +19,7 @@ export const createDisplay = /* GraphQL */ `
         }
         nextToken
       }
+      type
       createdAt
       updatedAt
     }
@@ -42,6 +43,7 @@ export const updateDisplay = /* GraphQL */ `
         }
         nextToken
       }
+      type
       createdAt
       updatedAt
     }
@@ -65,6 +67,7 @@ export const deleteDisplay = /* GraphQL */ `
         }
         nextToken
       }
+      type
       createdAt
       updatedAt
     }

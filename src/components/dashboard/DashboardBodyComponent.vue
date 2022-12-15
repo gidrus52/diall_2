@@ -1,10 +1,10 @@
 <template>
-    <v-main style="height: 100vh !important;">
-        <div class="overflow-hidden">
+    <v-main style="">
+        <v-container class="ma-0 pa-0">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>
-        </div>
+        </v-container>
 
     </v-main>
 </template>

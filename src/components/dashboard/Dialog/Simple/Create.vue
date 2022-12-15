@@ -4,8 +4,7 @@
                 transition="dialog-top-transition"
                 max-width="600"
                 v-model="dialog"
-                dark
-        >
+                dark >
 
             <template v-slot:default="dialog">
                 <v-card>

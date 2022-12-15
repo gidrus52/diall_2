@@ -1,0 +1,12 @@
+.coub-button{
+  width: $coube;
+  height: $coube;
+}
+.button-item {
+        opacity: .3;
+
+        &.active {
+            opacity: .9;
+        }
+
+    }

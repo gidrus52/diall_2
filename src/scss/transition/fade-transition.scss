@@ -1,0 +1,9 @@
+.appear_from_back {
+  animation: from_back .5s ease-in;
+}
+
+@keyframes from_back {
+  0% {opacity: 0}
+  50% {opacity: .5}
+  100% {opacity: 1}
+}
