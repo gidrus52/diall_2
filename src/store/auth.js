@@ -24,6 +24,8 @@ export default {
         },
         SET_CURRENT_USER: (state, data) => state.is_current_user = data,
         SET_ADMIN_CLAIM: (state, data) => {
+            console.log('store')
+            console.log(store)
             state.is_JWTtoken = data.signInUserSession.accessToken.jwtToken
             data.compare ? (state.is_admin = true) && (state.is_user = false) : (state.is_admin = false) && (state.is_user = true)
         }
@@ -46,7 +48,6 @@ export default {
                     store.dispatch('setAdmin', user)
                 }
             }).catch(e => {
-                console.log(e)
                 commit("SET_USER", null)
             })
         },
@@ -54,11 +55,11 @@ export default {
             await Auth.signOut().then().catch()
         },
         set_current_user: async ({commit, dispatch}, data) => {
-            console.log(data)
+
             commit("SET_CURRENT_USER", data)
         },
         setAdmin({commit, dispatch}, data) {
-            console.log(data)
+
             const compare_group = (name) => {
                 let compare = data.signInUserSession.idToken.payload['cognito:groups'].includes(name)
                 compare ? (commit('SET_ADMIN_CLAIM', {

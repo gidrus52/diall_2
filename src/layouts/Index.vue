@@ -1,9 +1,7 @@
 <template>
-  <div class="">
       <component :is="currentLayout">
         <slot></slot>
       </component>
-  </div>
 </template>
 
 <script>

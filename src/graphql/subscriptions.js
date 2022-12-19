@@ -75,6 +75,8 @@ export const onCreateProject = /* GraphQL */ `
           title
           author
           project
+          assigned
+          priority
           createdAt
           updatedAt
         }
@@ -97,6 +99,8 @@ export const onUpdateProject = /* GraphQL */ `
           title
           author
           project
+          assigned
+          priority
           createdAt
           updatedAt
         }
@@ -119,6 +123,8 @@ export const onDeleteProject = /* GraphQL */ `
           title
           author
           project
+          assigned
+          priority
           createdAt
           updatedAt
         }
@@ -137,16 +143,8 @@ export const onCreateTask = /* GraphQL */ `
       title
       author
       project
-      assigned {
-        items {
-          id
-          name
-          task
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      assigned
+      priority
       createdAt
       updatedAt
     }
@@ -159,16 +157,8 @@ export const onUpdateTask = /* GraphQL */ `
       title
       author
       project
-      assigned {
-        items {
-          id
-          name
-          task
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      assigned
+      priority
       createdAt
       updatedAt
     }
@@ -181,16 +171,8 @@ export const onDeleteTask = /* GraphQL */ `
       title
       author
       project
-      assigned {
-        items {
-          id
-          name
-          task
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      assigned
+      priority
       createdAt
       updatedAt
     }
@@ -201,7 +183,20 @@ export const onCreateUser = /* GraphQL */ `
     onCreateUser(filter: $filter) {
       id
       name
-      task
+      avatar
+      task {
+        items {
+          id
+          title
+          author
+          project
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -212,7 +207,20 @@ export const onUpdateUser = /* GraphQL */ `
     onUpdateUser(filter: $filter) {
       id
       name
-      task
+      avatar
+      task {
+        items {
+          id
+          title
+          author
+          project
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -223,7 +231,20 @@ export const onDeleteUser = /* GraphQL */ `
     onDeleteUser(filter: $filter) {
       id
       name
-      task
+      avatar
+      task {
+        items {
+          id
+          title
+          author
+          project
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }

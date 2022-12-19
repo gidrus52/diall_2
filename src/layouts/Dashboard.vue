@@ -1,9 +1,10 @@
 <template>
     <v-app>
         <DashboardDriveComponentLeft/>
+        <DashboardBodyComponent/>
         <DashboardDriveComponentRight v-if="$route.fullPath!='/'"/>
-            <DashboardBodyComponent/>
     </v-app>
+
 </template>
 
 <script>
@@ -23,8 +24,8 @@
                 ],
             }
         },
-        computed:{
-            currentRoute(){
+        computed: {
+            currentRoute() {
                 return this
             }
         }

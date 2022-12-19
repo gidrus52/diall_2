@@ -27,12 +27,13 @@ export default {
     },
     mutations: {
         SET_USER_NOCOGNITO: (state, data) => {
+            console.log('SET_USER_NOCOGNITO')
+            console.log(data)
             state.current_user_noCognito = data.data.getUser
         }
     },
     actions: {
-        addUser:
-            async ({commit, dispatch}, userData) => {
+        addUser: async ({commit, dispatch}, userData) => {
                 const jwt = store.getters['is_JWTtoken']
                 API.post(queries.AdminQueries.name, queries.AdminQueries.createUser.path, {
                     headers: {
@@ -81,7 +82,7 @@ export default {
                 }
 
             }).then(data => {
-                console.log(data)
+
 
             })
         },
@@ -127,25 +128,42 @@ export default {
             })
         },
         createDisplay: ({commit, dispatch}, data) => {
-            console.log(data)
             API.graphql((graphqlOperation(graphQlMutations.createDisplay, {
                 input: {
                     ...data
                 }
             }))).then(data => {
                 dispatch('create_event',{event: 'success_create_display'})
-                console.log(data)
+
             }).catch(err => console.log(err))
         },
-        createTask: async ({commit, dispatch}, data) => {
-            API.graphql((graphqlOperation(mutations.createTask, {
+        createProject: ({commit, dispatch}, data) => {
+            console.log('createProject')
+            API.graphql((graphqlOperation(graphQlMutations.createProject, {
                 input: {
                     ...data
                 }
             }))).then(data => {
-                dispatch('create_allert', {name: 'success', msg: data, type: 'task'})
-                dispatch('dialog_end')
-                dispatch('listTaskEvent')
+                dispatch('create_event',{event: 'success_create_project'})
+                console.log(data)
+            }).catch(err => console.log(err))
+        },
+        createTask: async ({commit, dispatch}, data) => {
+            let user = store.getters.is_current_user.username
+            console.log(user)
+            console.log('data')
+            console.log(data)
+
+            API.graphql((graphqlOperation(mutations.createTask, {
+                input: {
+                    'title': data.name,
+                    'author': user,
+                    'project': data.targetEl.id,
+                    'assigned': data.assigned?data.assigned:'null',
+                    'priority': data.priority?data.priority:'null'
+                }
+            }))).then(data => {
+               console.log(data)
             })
 
         },

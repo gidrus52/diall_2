@@ -1,22 +1,21 @@
 <template>
     <v-navigation-drawer
-            v-model="drawer"
-            app
+            v-model="rightDrawer"
             right
-            width="600"
+            width="580"
             dark
-            fixed
-            @click="drawer=!drawer"
+            absolute
     >
         <v-list-item style="height: 75px">
             <v-list-item-content>
                 <v-list-item-title>Текущие чаты</v-list-item-title>
             </v-list-item-content>
-            <mdiRoundButton :name-icon="'mdi-cancel'" :property-data="propertyData" ></mdiRoundButton>
+            <mdiRoundButton :name-icon="'mdi-cancel'"
+                            :property-data="propertyData"></mdiRoundButton>
         </v-list-item>
 
         <v-divider></v-divider>
-        <v-card class="ma-4" height="820" >
+        <v-card class="ma-4" height="820">
             <Chat
                     :participants="participants"
                     :myself="myself"
@@ -42,7 +41,7 @@
                     @onClose="onClose">
                 <template v-slot:header>
                     <div class="ma-2">
-                       Мой чат. Проект № 1.
+                        Мой чат. Проект № 1.
                     </div>
                 </template>
             </Chat>
@@ -54,15 +53,18 @@
 <script>
     import mdiRoundButton from '../button/mdiRoundButton'
     import {Chat} from 'vue-quick-chat'
+    import {eventBus} from "../../main"
+    import {mapGetters,mapActions} from 'vuex'
     import 'vue-quick-chat/dist/vue-quick-chat.css'
 
     export default {
         name: "DashboardDriveComponentRight",
         data: () => ({
-            drawer: true,
+            rightDrawer: false,
             propertyData: {
                 event: 'rightMenu'
             },
+            mini: true,
             visible: true,
             participants: [
                 {
@@ -77,7 +79,7 @@
                 }
             ],
             myself: {
-                name: 'Серкей С.',
+                name: 'Сергей С.',
                 id: 3,
                 profilePicture: 'https://cdn.vuetifyjs.com/images/john.jpg'
             },
@@ -170,14 +172,21 @@
                     height: '30px',
                     borderRadius: '50%'
                 }
-            }
+            },
 
         }),
         components: {
             mdiRoundButton, Chat
         },
-        computed: {},
+        computed: {
+            ...mapGetters(['right_menu']),
+            rigth_menu_state() {
+                this.rightDrawer = this.right_menu
+                return this.right_menu
+            }
+        },
         methods: {
+            ...mapActions(['right_menu_action']),
             onType: function (event) {
                 //here you can set any behavior
             },
@@ -229,11 +238,18 @@
                 console.log('Image clicked', message.src)
             }
         },
+        watch: {
+            rigth_menu_state(e) {
+
+            }
+        },
         mounted() {
-            console.log(this.$route)
+
         },
         created() {
-
+            eventBus.$on('switcher',()=>{
+                this.right_menu_action(false)
+            })
         }
     }
 </script>

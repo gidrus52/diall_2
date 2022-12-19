@@ -1,26 +1,20 @@
 <template>
     <v-app-bar
-            app
+
             color="#6A76AB"
             dark
             shrink-on-scroll
             height="125"
-            src="https://picsum.photos/1920/1080?random"
-            fade-img-on-scroll
+
             scroll-target="#scrolling-techniques-3"
             class=""
     >
-        <template v-slot:img="{ props }">
-            <v-img
-                    v-bind="props"
-                    gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-            ></v-img>
-        </template>
+
 
         <v-container class="flex d-flex flex-row align-center justify-center">
             <v-row class="flex d-flex flex-row align-center justify-space-between">
                 <v-col class="col-xl-2 text-black">
-                    Проект .....
+                    {{displayName}}
                 </v-col>
 
                 <v-col class="col-xl-1">
@@ -61,18 +55,23 @@
                         </v-btn>
                     </v-container>
                 </v-col>
+
             </v-row>
         </v-container>
 
 
         <v-spacer/>
-
+        <v-col class="flex d-flex justify-end align-end" v-if="!right_menu_state">
+            <v-btn @click="right_menu_switcher" outlined icon>
+                <v-icon>mdi-chevron-left</v-icon>
+            </v-btn>
+        </v-col>
 
         <template v-slot:extension>
             <v-tabs align-with-title
                     v-model="currentTabNumber"
             >
-                <v-tab v-for="(item,index) in displayItems" :key="index" class="border">
+                <v-tab @click="tabEvent(item)" v-for="(item,index) in displayItems" :key="index" class="border">
 
                     <span>{{item.name}}</span>
                     <template>
@@ -100,7 +99,7 @@
                 </v-tooltip>
             </v-tabs>
         </template>
-
+        <createDialog/>
     </v-app-bar>
 </template>
 
@@ -108,13 +107,14 @@
     import basic_name from '../../../../constants/basic_name'
     import {eventBus} from "../../../../main";
     import {mapActions, mapGetters} from 'vuex'
-    import createDialog from '../../Dialog/Simple/Create'
+    import createDialog from '../../../Dialog/Simple/Create'
 
     export default {
         name: "Head",
         components: {createDialog},
         data() {
             return {
+                displayName:'',
                 visual: false,
                 drawer: null,
                 items: [
@@ -131,7 +131,7 @@
             }
         },
         computed: {
-            ...mapGetters(['displayList']),
+            ...mapGetters(['displayList', 'right_menu','currentDisplayItem']),
             select_icon() {
                 return 'success'
             },
@@ -140,40 +140,49 @@
             },
             displays() {
                 this.displayItems
-                console.log('this.displayItems')
-                console.log(this.displayItems)
+
                 this.displayItems = this.displayList
+            },
+            display(){
+              return this.currentDisplayItem
+            },
+            right_menu_state() {
+                return this.right_menu
             }
 
         },
         methods: {
-            ...mapActions(['dialogStart', 'listDisplay']),
+            ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject']),
             addTable() {
-                console.log('bla')
-                eventBus.$emit('dialogStart')
+                eventBus.$emit('dialogStart', {name: 'Создать доску'})
             },
-            sweetfdf() {
-                this.$swal('Hello Vue world!!!')
+            right_menu_switcher() {
+                this.right_menu_action(true)
+            },
+            tabEvent(el) {
+                this.currentDisplay(el)
             }
         },
         watch: {
-            displays() {
-
-            }
+            displays() {}, display(e) {this.displayName = e.name }, right_menu_state() { }
         },
         mounted() {
             this.listDisplay()
         },
         created() {
             eventBus.$on('success_create_display', () => {
-                console.log('success_create_display from taskbody')
                 this.listDisplay()
             })
+            eventBus.$on('success_create_project', () => {
+                this.listProject()
+            })
+
         }
 
     }
 </script>
 
-<style scoped>
+<style lang="scss">
+
 
 </style>

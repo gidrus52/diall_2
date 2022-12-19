@@ -21,11 +21,14 @@ type Task @model {
   title: String!
   author: String!
   project: ID! @index(name: "byProject")
-  assigned: [User] @hasMany (indexName: "byTask", fields: ["id"])
+  assigned: ID @index(name: "byUser")
+  priority: String
 }
 
 type User @model {
   id: ID!
   name: String!
-  task: ID @index(name: "byTask")
+  avatar: String
+  task:  [Task] @hasMany (indexName: "byUser", fields: ["id"])
+
 }

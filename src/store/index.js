@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
 import admin_action from './admin_action'
+import dom_action from './dom_action'
 import user_action from './user_action'
 import load_event from './load_event'
 
@@ -18,7 +19,8 @@ const store =  new Vuex.Store({
     auth,
     admin_action,
     user_action,
-    load_event
+    load_event,
+    dom_action
   }
 })
 

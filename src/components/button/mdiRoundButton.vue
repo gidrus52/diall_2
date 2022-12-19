@@ -30,11 +30,12 @@
         },
         methods:{
             createButtonEvent(data){
-                console.log('data')
+                eventBus.$emit('switcher')
+
             },
         },
         mounted() {
-            console.log(this.propertyData)
+
         }
     }
 </script>

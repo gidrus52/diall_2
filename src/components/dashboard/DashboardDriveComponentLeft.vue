@@ -1,12 +1,12 @@
 <template>
     <v-navigation-drawer
             :mini-variant.sync="mini"
-            mini-variant-width="70"
+            mini-variant-width="80"
             v-model="drawer"
-            permanent
-            app
-            fixed
             dark
+            absolute
+            permanent
+            left
 
     >
         <v-list-item style="height: 75px">
@@ -15,7 +15,7 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-                <v-list-item-title>John Leider</v-list-item-title>
+                <v-list-item-title>Сергей </v-list-item-title>
             </v-list-item-content>
             <mdiRoundButton
                     :name-icon="'mdi-pencil'" :property-data="propertyData"/>
@@ -95,7 +95,7 @@
             navigationItems: [
                 {title: 'Проекты', icon: 'mdi-view-dashboard', path: 'display'},
                 {title: 'Задания', icon: 'mdi-image'},
-                {title: 'О приложении', icon: 'mdi-help-box'},
+                // {title: 'О приложении', icon: 'mdi-help-box'},
                 {title: 'Главная страница', icon: 'mdi-checkbox-blank-outline', path: '/'},
             ],
             right: null,
@@ -105,7 +105,6 @@
         },
         computed: {
             wathMini() {
-                console.log(this.mini)
                 return this.mini
             }
         },

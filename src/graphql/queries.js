@@ -54,6 +54,8 @@ export const getProject = /* GraphQL */ `
           title
           author
           project
+          assigned
+          priority
           createdAt
           updatedAt
         }
@@ -93,16 +95,8 @@ export const getTask = /* GraphQL */ `
       title
       author
       project
-      assigned {
-        items {
-          id
-          name
-          task
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      assigned
+      priority
       createdAt
       updatedAt
     }
@@ -120,9 +114,8 @@ export const listTasks = /* GraphQL */ `
         title
         author
         project
-        assigned {
-          nextToken
-        }
+        assigned
+        priority
         createdAt
         updatedAt
       }
@@ -135,7 +128,20 @@ export const getUser = /* GraphQL */ `
     getUser(id: $id) {
       id
       name
-      task
+      avatar
+      task {
+        items {
+          id
+          title
+          author
+          project
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -151,7 +157,10 @@ export const listUsers = /* GraphQL */ `
       items {
         id
         name
-        task
+        avatar
+        task {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -239,9 +248,8 @@ export const tasksByProject = /* GraphQL */ `
         title
         author
         project
-        assigned {
-          nextToken
-        }
+        assigned
+        priority
         createdAt
         updatedAt
       }
@@ -249,16 +257,16 @@ export const tasksByProject = /* GraphQL */ `
     }
   }
 `;
-export const usersByTask = /* GraphQL */ `
-  query UsersByTask(
-    $task: ID!
+export const tasksByAssigned = /* GraphQL */ `
+  query TasksByAssigned(
+    $assigned: ID!
     $sortDirection: ModelSortDirection
-    $filter: ModelUserFilterInput
+    $filter: ModelTaskFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    usersByTask(
-      task: $task
+    tasksByAssigned(
+      assigned: $assigned
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -266,8 +274,11 @@ export const usersByTask = /* GraphQL */ `
     ) {
       items {
         id
-        name
-        task
+        title
+        author
+        project
+        assigned
+        priority
         createdAt
         updatedAt
       }

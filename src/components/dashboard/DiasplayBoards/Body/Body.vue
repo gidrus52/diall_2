@@ -1,35 +1,44 @@
 <template>
-    <v-container fluid
-                 class="pb-6"
-                 style="background-color: blueviolet"
-    >
-        <v-row class="mt-2 flex flex-column d-flex">
-            <v-col>
-                <bodyTop/>
-            </v-col>
-            <v-col>
-                <v-row class="flex d-flex flex-column justify-start align-start ml-8">
-                    <bodyBottom/>
-                </v-row>
-            </v-col>
-        </v-row>
-    </v-container>
+    <v-main
+            fluid style="background: #5b5f5f; height: 80.5vh;" >
+            <BodyTop  class="mb-2 mt-2"/>
+            <BodyBottom style="margin-left: 0 !important;"/>
+            <Overlay :overlay="overlay"></Overlay>
+    </v-main>
+
 </template>
 
 <script>
-    import bodyTop from "./BodyComponents/Top"
-    import bodyBottom from "./BodyComponents/Bottom"
+    import BodyTop from "./BodyComponents/Top"
+    import BodyBottom from "./BodyComponents/Bottom"
+    import Overlay from "../../../overlay/overlay"
+    import {mapGetters} from 'vuex'
+
 
     export default {
         name: "Body",
         components: {
-            bodyTop, bodyBottom
+            BodyTop, BodyBottom, Overlay
         },
         data() {
-            return {}
+            return {
+                overlay: null
+            }
         },
-        computed: {},
+        computed: {
+            ...mapGetters(['displayList']),
+            displays() {
+                return this.displayList
+            },
+            findOverlay() {
+                this.displays.length ? this.overlay = true : this.overlay = !true
+            }
+        },
         methods: {},
+        watch: {displays() {}, findOverlay() {}},
+        mounted() {
+
+        }
 
 
     }
