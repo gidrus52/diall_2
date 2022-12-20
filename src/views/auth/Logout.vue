@@ -1,5 +1,4 @@
 <template>
-    <v-app>
         <v-row>
             <v-col cols="12" lg="7" xl="6" class="info d-none d-md-flex align-center justify-center">
                 <v-container>
@@ -25,7 +24,6 @@
                 </v-container>
             </v-col>
         </v-row>
-    </v-app>
 </template>
 
 <script>

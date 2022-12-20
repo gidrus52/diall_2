@@ -9,8 +9,6 @@ export default {
         currentDisplay: {},
         projectList: [],
         currentProject: [],
-        companysList: [],
-        readyList: [],
         taskList: [],
         currentTask: {},
 
@@ -36,6 +34,7 @@ export default {
             state.currentDisplay = element
         },
         SET_PROJECT_LIST: async (state, data) => {
+
             state.currentProject = await data.data.listProjects.items
         },
         SET_TASK_LIST: async (state, data) => {
@@ -63,7 +62,11 @@ export default {
             }).catch(err => console.log(err))
         },
         currentDisplay: async ({commit, dispatch}, element) => {
-            commit('SET_CURRENT_DISPLAY', element)
+            console.log('fibnd bug 1')
+            console.log('elementelementelementelementelementelement')
+            console.log(element)
+            await commit('SET_CURRENT_DISPLAY', element)
+            dispatch('listProject',element)
         },
         listProject: ({commit, dispatch}, filter) => {
             let current_id = filter.id
@@ -77,23 +80,12 @@ export default {
                 await commit('SET_PROJECT_LIST', data)
             }).catch(err => console.log(err))
         },
-        listCompany: async ({commit, dispatch}) => {
-            API.graphql((graphqlOperation(graphQlQueries.listCompanies))).then(async data => await commit('SET_COMPANY_LIST', data)).catch(err => console.log(err))
-        },
-        listCategory: ({commit, dispatch}) => {
-            API.graphql((graphqlOperation(graphQlQueries.listCategories))).then(async data => await commit('SET_CATEGORY_LIST', data)).catch(err => console.log(err))
-        },
-        getTask: ({commit, dispatch}, id) => {
-            API.graphql((graphqlOperation(graphQlQueries.getTask, {id: id}))).then(async data => await commit('SET_CURRENT_TASK', data)).catch(err => console.log(err))
-        },
-        createComment: ({commit, dispatch}, data) => {
-            API.graphql((graphqlOperation(graphQlMutations.createComment, {
-                input: {
-                    ...data
-                }
-            }))).then(data => {
+        listTasks: async ({commit,dispatch})=>{
+            API.graphql((graphqlOperation(graphQlQueries.listTasks))).then(async data => {
+                await commit('SET_TASK_LIST', data)
             }).catch(err => console.log(err))
-        },
+        }
+
     },
 
 }

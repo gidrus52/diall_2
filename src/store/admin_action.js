@@ -34,43 +34,43 @@ export default {
     },
     actions: {
         addUser: async ({commit, dispatch}, userData) => {
-                const jwt = store.getters['is_JWTtoken']
-                API.post(queries.AdminQueries.name, queries.AdminQueries.createUser.path, {
-                    headers: {
-                        'Authorization': `${jwt}`
-                    },
-                    body: {
-                        'name': `${userData['first name']} ${userData['last name']}`,
-                        'email': userData.email,
-                        'password': userData.password,
-                        'group': 'User',
-                    }
+            const jwt = store.getters['is_JWTtoken']
+            API.post(queries.AdminQueries.name, queries.AdminQueries.createUser.path, {
+                headers: {
+                    'Authorization': `${jwt}`
+                },
+                body: {
+                    'name': `${userData['first name']} ${userData['last name']}`,
+                    'email': userData.email,
+                    'password': userData.password,
+                    'group': 'User',
+                }
 
-                }).then(async (response) => {
-                    let UserDetails = {
-                        companyID: userData.company.id != null ? userData.company.id : '',
-                        companyName: userData.company.name != null ? userData.company.name : '',
-                        name: `${userData['first name']} ${userData['last name']}`,
-                        email: userData.email,
-                        jobTitle: userData.jobTitle
+            }).then(async (response) => {
+                let UserDetails = {
+                    companyID: userData.company.id != null ? userData.company.id : '',
+                    companyName: userData.company.name != null ? userData.company.name : '',
+                    name: `${userData['first name']} ${userData['last name']}`,
+                    email: userData.email,
+                    jobTitle: userData.jobTitle
 
+                }
+                API.graphql((graphqlOperation(mutations.createUser, {
+                    input: {
+                        ...UserDetails,
+                        id: response.result.User.Username
                     }
-                    API.graphql((graphqlOperation(mutations.createUser, {
-                        input: {
-                            ...UserDetails,
-                            id: response.result.User.Username
-                        }
-                    }))).then((data => {
-                    })).catch(err => console.log(err))
-                    let user = await findUsersData('name', 'email', response.result.User.Attributes)
-                    dispatch('dialog_end')
-                    dispatch('create_allert', {name: 'success', msg: user, type: 'user'})
-                }).catch((e) => {
-                    dispatch('dialog_end')
-                    dispatch('create_allert', {name: 'error', msg: e.response.data.message, type: 'user'}
-                    )
-                })
-            },
+                }))).then((data => {
+                })).catch(err => console.log(err))
+                let user = await findUsersData('name', 'email', response.result.User.Attributes)
+                dispatch('dialog_end')
+                dispatch('create_allert', {name: 'success', msg: user, type: 'user'})
+            }).catch((e) => {
+                dispatch('dialog_end')
+                dispatch('create_allert', {name: 'error', msg: e.response.data.message, type: 'user'}
+                )
+            })
+        },
         getUser: async ({commit, dispatch}, userData) => {
             const jwt = store.getters['is_JWTtoken']
             API.get(queries.AdminQueries.name, queries.AdminQueries.getUser.path, {
@@ -133,7 +133,7 @@ export default {
                     ...data
                 }
             }))).then(data => {
-                dispatch('create_event',{event: 'success_create_display'})
+                dispatch('create_event', {event: 'success_create_display'})
 
             }).catch(err => console.log(err))
         },
@@ -144,11 +144,12 @@ export default {
                     ...data
                 }
             }))).then(data => {
-                dispatch('create_event',{event: 'success_create_project'})
+                dispatch('create_event', {event: 'success_create_project'})
                 console.log(data)
             }).catch(err => console.log(err))
         },
         createTask: async ({commit, dispatch}, data) => {
+            console.log(data)
             let user = store.getters.is_current_user.username
             console.log(user)
             console.log('data')
@@ -159,37 +160,24 @@ export default {
                     'title': data.name,
                     'author': user,
                     'project': data.targetEl.id,
-                    'assigned': data.assigned?data.assigned:'null',
-                    'priority': data.priority?data.priority:'null'
+                    'assigned': data.assigned ? data.assigned : 'null',
+                    'priority': data.priority ? data.priority : 'null'
                 }
             }))).then(data => {
-               console.log(data)
+                console.log(data)
+                dispatch('create_event', {event: 'success_create_project'})
             })
-
         },
-        createCategory: async ({commit, dispatch}, data) => {
-            API.graphql((graphqlOperation(mutations.createCategory, {
-                input: {
-                    ...data
-                }
-            }))).then(data => {
-                dispatch('create_allert', {name: 'success', msg: data, type: 'category'})
-                dispatch('dialog_end')
-                dispatch('listTaskEvent')
-            })
-
-        },
-        updateCategory: async ({commit, dispatch}, data) => {
-            API.graphql((graphqlOperation(mutations.updateCategory, {
-                input: {
-                    ...data
-                }
-            }))).then(data => {
-                dispatch('create_allert', {name: 'success', msg: data, type: 'category'})
-                dispatch('dialog_end')
-                dispatch('listTaskEvent')
-            })
-
+        zeroAction: async ({commit, dispatch}, data) => {
+            console.log(data)
+            if (data === 'project') {
+                console.log('zero')
+                commit('SET_PROJECT_LIST', {
+                    data: {
+                        listProjects: {items: []}
+                    }
+                })
+            }
         }
     }
 

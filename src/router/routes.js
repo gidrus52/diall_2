@@ -31,15 +31,6 @@ export const routes = [
         }
     },
     {
-        path: '/users',
-        name: pages.PAGE_NAME_USERS,
-        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/User'),
-        meta: {
-            requiresAuth: true,
-            layout: layouts.LAYOUT_DASHBOARDS
-        }
-    },
-    {
         path: '/display',
         name: pages.PAGE_NAME_TASKS,
         component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Display'),
@@ -47,14 +38,5 @@ export const routes = [
             requiresAuth: true,
             layout: layouts.LAYOUT_DASHBOARDS
         }
-    },
-    {
-        path: '/categories',
-        name: pages.PAGE_NAME_CATEGORY,
-        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Category'),
-        meta: {
-            requiresAuth: true,
-            layout: layouts.LAYOUT_DASHBOARDS
-        }
-    },
+    }
 ]

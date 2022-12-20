@@ -1,16 +1,17 @@
 <template>
-    <v-app>
+    <div>
         <DashboardDriveComponentLeft/>
         <DashboardBodyComponent/>
         <DashboardDriveComponentRight v-if="$route.fullPath!='/'"/>
-    </v-app>
+    </div>
+
 
 </template>
 
 <script>
-    import DashboardDriveComponentLeft from '../components/dashboard/DashboardDriveComponentLeft'
-    import DashboardBodyComponent from '../components/dashboard/DashboardBodyComponent'
-    import DashboardDriveComponentRight from '../components/dashboard/DashboardDriveComponentRight'
+    import DashboardDriveComponentLeft from '../components/dashboard/Left'
+    import DashboardBodyComponent from '../components/dashboard/Body'
+    import DashboardDriveComponentRight from '../components/dashboard/Right'
 
     export default {
         name: "Dashboard",

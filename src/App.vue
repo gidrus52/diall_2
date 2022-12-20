@@ -1,11 +1,11 @@
 <template>
-    <div id="app">
+    <v-app id="app">
         <layout>
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>
         </layout>
-    </div>
+    </v-app>
 </template>
 <script>
     import Layout from '@/layouts/Index'
