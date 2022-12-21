@@ -1,7 +1,7 @@
 <template>
-    <v-row class="flex d-flex flex-row align-center justify-start ml-4">
-        <v-col class="col-md-4 col-xl-3 flex d-flex align-center justify-start">
-            <div class="flex d-flex flex-row mr-1" v-select-target-el
+    <v-row  class="flex d-flex flex-row align-center justify-start">
+        <v-col cols="1" xl="1" sm="2" md="3" class="flex d-flex">
+            <div class="flex d-flex flex-row justify-end  mr-1" v-select-target-el
             >
                 <v-btn
                         v-for="(button,index) in bottonItem"
@@ -15,26 +15,19 @@
                     </v-icon>
                 </v-btn>
             </div>
-            <v-menu v-for="el in menuItems" offset-y>
-                <template v-slot:activator="{ on, attrs }" class="d-flex flex justify-start">
-                    <v-btn style="position: relative"
-                           class="mr-2"
-                           color="indigo"
-                           v-bind="attrs"
-                           v-on="on"
-                           height="23">
-                        <span class="" style="font-size: 9px">{{el}}</span>
+        </v-col>
+        <v-col cols="3" xl="3" sm="3" md="3">
+            <v-menu v-for="el in menuItems" bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                            class="mr-2"
+                            color="primary"
+                            v-bind="attrs"
+                            v-on="on"
+                            height="40">
+                        <span>{{el}}</span>
                     </v-btn>
                 </template>
-
-                <v-card width="200" class="">
-                    <v-list-item
-                            v-for="(item, index) in items"
-                            :key="index"
-                    >
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item>
-                </v-card>
             </v-menu>
             <v-btn rounded color="black" width="" small dark icon>
                 <v-icon color="indigo" dark>mdi-plus</v-icon>
@@ -64,9 +57,6 @@
             clickEvent(index) {
                 this.$emit('mousetrapped', index)
             },
-            testElse() {
-
-            }
         }
     }
 </script>

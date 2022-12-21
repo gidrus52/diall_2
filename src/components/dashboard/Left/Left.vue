@@ -80,7 +80,7 @@
 </template>
 
 <script>
-    import mdiRoundButton from '../domHelpers/button/mdiRoundButton'
+    import mdiRoundButton from '../../domHelpers/button/mdiRoundButton'
 
     export default {
         name: "DashboardDriveComponentLeft",

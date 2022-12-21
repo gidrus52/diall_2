@@ -1,6 +1,5 @@
 import {API, graphqlOperation} from 'aws-amplify'
 import * as graphQlQueries from '../graphql/queries'
-import * as graphQlMutations from '../graphql/mutations'
 
 export default {
     state: {
@@ -11,6 +10,7 @@ export default {
         currentProject: [],
         taskList: [],
         currentTask: {},
+        chatList: []
 
     },
     getters: {
@@ -21,7 +21,8 @@ export default {
         listCurrentProject: state => state.currentProject,
         listTaskGetter: state => state.taskList,
         currentTaskGetter: state => state.currentTask,
-        readyList: state => state.readyList
+        readyList: state => state.readyList,
+        chatListGetter: state => state.chatList,
     },
     mutations: {
         SET_USER_LIST: async (state, data) => {
@@ -39,6 +40,10 @@ export default {
         },
         SET_TASK_LIST: async (state, data) => {
             state.taskList = data.data.listTasks.items
+        },
+        SET_CHAT_LIST: async (state, data) => {
+            console.log(data)
+            state.chatList = data.data.listTasks.items
         },
         SET_CATEGORY_LIST: (state, data) => {
             state.categoryList = data.data.listCategories.items
@@ -66,7 +71,7 @@ export default {
             console.log('elementelementelementelementelementelement')
             console.log(element)
             await commit('SET_CURRENT_DISPLAY', element)
-            dispatch('listProject',element)
+            dispatch('listProject', element)
         },
         listProject: ({commit, dispatch}, filter) => {
             let current_id = filter.id
@@ -80,9 +85,22 @@ export default {
                 await commit('SET_PROJECT_LIST', data)
             }).catch(err => console.log(err))
         },
-        listTasks: async ({commit,dispatch})=>{
+        listTasks: async ({commit, dispatch}) => {
             API.graphql((graphqlOperation(graphQlQueries.listTasks))).then(async data => {
                 await commit('SET_TASK_LIST', data)
+            }).catch(err => console.log(err))
+        },
+        ListTaskForChat: async ({commit, dispatch}, display) => {
+            console.log('ListTaskForChat')
+            let current_id = display.id
+            let prepare_filter = {
+                display: {
+                    eq: current_id
+                }
+            }
+            API.graphql({query: graphQlQueries.listTasks, variables: {filter: prepare_filter}}).then(async data => {
+                console.log(data)
+                await commit('SET_CHAT_LIST', data)
             }).catch(err => console.log(err))
         }
 

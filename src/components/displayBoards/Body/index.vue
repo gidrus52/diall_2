@@ -1,18 +1,20 @@
 <template>
-    <v-main fluid style="background: #2c3e50;"class="fill-height">
-        <v-container fluid  class="fill-height">
+
+    <div>
+        <v-container fluid class="fill-height">
             <Top class="mb-2 mt-2"/>
             <Bottom style="margin-left: 0 !important;"/>
             <Overlay :overlay="overlay"></Overlay>
         </v-container>
-    </v-main>
+    </div>
+
 
 </template>
 
 <script>
     import Top from "./BodyComponents/Top"
     import Bottom from "./BodyComponents/Bottom"
-    import Overlay from "../../../domHelpers/overlay/overlay"
+    import Overlay from "../../domHelpers/overlay/overlay"
     import {mapGetters} from 'vuex'
 
 

@@ -151,21 +151,19 @@ export default {
         createTask: async ({commit, dispatch}, data) => {
             console.log(data)
             let user = store.getters.is_current_user.username
-            console.log(user)
-            console.log('data')
-            console.log(data)
 
             API.graphql((graphqlOperation(mutations.createTask, {
                 input: {
                     'title': data.name,
                     'author': user,
                     'project': data.targetEl.id,
+                    'display': data.targetEl.display,
                     'assigned': data.assigned ? data.assigned : 'null',
                     'priority': data.priority ? data.priority : 'null'
                 }
             }))).then(data => {
                 console.log(data)
-                dispatch('create_event', {event: 'success_create_project'})
+                dispatch('create_event', {event: 'success_create_task'})
             })
         },
         zeroAction: async ({commit, dispatch}, data) => {

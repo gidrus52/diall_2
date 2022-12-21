@@ -19,14 +19,14 @@
         <v-card class="ma-4" height="820">
             <v-expansion-panels>
                 <v-expansion-panel
-                        v-for="(item,i) in 5"
+                        v-for="(item,i) in chatItems"
                         :key="i"
                 >
                     <v-expansion-panel-header>
-                        Item
+                        {{item.title}}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
-                        <ChatComponent></ChatComponent>
+                        <ChatComponent :chatsName="item.title" ></ChatComponent>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels>
@@ -37,12 +37,12 @@
 </template>
 
 <script>
-    import mdiRoundButton from '../domHelpers/button/mdiRoundButton'
-    import ChatComponent from '../left/MyChat'
-    import {eventBus} from "../../main"
+    import mdiRoundButton from '../../domHelpers/button/mdiRoundButton'
+    import ChatComponent from '../Left/components/MyChat'
+    import {eventBus} from "../../../main"
     import {mapActions, mapGetters} from 'vuex'
     import {API} from "aws-amplify";
-    import * as graphQlQueries from "../../graphql/queries";
+    import * as graphQlQueries from "../../../graphql/queries";
 
     export default {
         name: "DashboardDriveComponentRight",
@@ -54,13 +54,14 @@
             displayItem: {},
             displayId: '',
             progetcItem:[],
-            taskItem: []
+            taskItem: [],
+            chatItems: []
         }),
         components: {
             mdiRoundButton, ChatComponent
         },
         computed: {
-            ...mapGetters(['right_menu', 'currentDisplayItem', 'listTaskGetter','listCurrentProject']),
+            ...mapGetters(['right_menu', 'currentDisplayItem', 'listTaskGetter','listCurrentProject','chatListGetter']),
             rigth_menu_state() {
                 this.rightDrawer = this.right_menu
                 return this.right_menu
@@ -73,6 +74,9 @@
             },
             tasks() {
                 return this.listTaskGetter
+            },
+            chat(){
+                return this.chatListGetter
             }
         },
         methods: {
@@ -84,15 +88,17 @@
             },
             display(e) {
                 this.displayId = e.id
-
             },
             async project(e){
                 this.progetcItem = e
-
-
             },
             tasks(e) {
             },
+            chat(e){
+                this.chatItems = e
+                console.log('chatchatchatchat')
+                console.log(e)
+            }
         },
         mounted() {
 

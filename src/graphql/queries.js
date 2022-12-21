@@ -6,6 +6,8 @@ export const getDisplay = /* GraphQL */ `
     getDisplay(id: $id) {
       id
       name
+      type
+      createdAt
       project {
         items {
           id
@@ -16,8 +18,20 @@ export const getDisplay = /* GraphQL */ `
         }
         nextToken
       }
-      type
-      createdAt
+      task {
+        items {
+          id
+          title
+          author
+          project
+          display
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -32,11 +46,14 @@ export const listDisplays = /* GraphQL */ `
       items {
         id
         name
+        type
+        createdAt
         project {
           nextToken
         }
-        type
-        createdAt
+        task {
+          nextToken
+        }
         updatedAt
       }
       nextToken
@@ -54,6 +71,7 @@ export const getProject = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -95,6 +113,7 @@ export const getTask = /* GraphQL */ `
       title
       author
       project
+      display
       assigned
       priority
       createdAt
@@ -114,6 +133,7 @@ export const listTasks = /* GraphQL */ `
         title
         author
         project
+        display
         assigned
         priority
         createdAt
@@ -135,6 +155,7 @@ export const getUser = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -188,11 +209,14 @@ export const displayByDate = /* GraphQL */ `
       items {
         id
         name
+        type
+        createdAt
         project {
           nextToken
         }
-        type
-        createdAt
+        task {
+          nextToken
+        }
         updatedAt
       }
       nextToken
@@ -248,6 +272,37 @@ export const tasksByProject = /* GraphQL */ `
         title
         author
         project
+        display
+        assigned
+        priority
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const tasksByDisplay = /* GraphQL */ `
+  query TasksByDisplay(
+    $display: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tasksByDisplay(
+      display: $display
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        author
+        project
+        display
         assigned
         priority
         createdAt
@@ -277,6 +332,7 @@ export const tasksByAssigned = /* GraphQL */ `
         title
         author
         project
+        display
         assigned
         priority
         createdAt

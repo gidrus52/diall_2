@@ -2,16 +2,18 @@
     <v-container>
         <v-row class="d-flex  flex-row align-start justify-start pl-0">
             <Card v-for="item in projectItem" :projectItem="item" class="ml-0"/>
-            <Button v-for="item in buttonsName" :buttonName="item"/>
+            <v-col>
+                <Button v-for="item in buttonsName" :buttonName="item"/>
+            </v-col>
         </v-row>
     </v-container>
 </template>
 
 <script>
     import Card from './bottomComponents/ProjectCard'
-    import Button from '../../../../domHelpers/button/SimpleButttonWithIcon'
+    import Button from '../../../domHelpers/button/SimpleButttonWithIcon'
     import {mapActions, mapGetters} from 'vuex'
-    import {eventBus} from "../../../../../main";
+    import {eventBus} from "../../../../main";
     import store from '@/store/index'
 
     export default {

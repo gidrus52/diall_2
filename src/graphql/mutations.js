@@ -9,6 +9,8 @@ export const createDisplay = /* GraphQL */ `
     createDisplay(input: $input, condition: $condition) {
       id
       name
+      type
+      createdAt
       project {
         items {
           id
@@ -19,8 +21,20 @@ export const createDisplay = /* GraphQL */ `
         }
         nextToken
       }
-      type
-      createdAt
+      task {
+        items {
+          id
+          title
+          author
+          project
+          display
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -33,6 +47,8 @@ export const updateDisplay = /* GraphQL */ `
     updateDisplay(input: $input, condition: $condition) {
       id
       name
+      type
+      createdAt
       project {
         items {
           id
@@ -43,8 +59,20 @@ export const updateDisplay = /* GraphQL */ `
         }
         nextToken
       }
-      type
-      createdAt
+      task {
+        items {
+          id
+          title
+          author
+          project
+          display
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -57,6 +85,8 @@ export const deleteDisplay = /* GraphQL */ `
     deleteDisplay(input: $input, condition: $condition) {
       id
       name
+      type
+      createdAt
       project {
         items {
           id
@@ -67,8 +97,20 @@ export const deleteDisplay = /* GraphQL */ `
         }
         nextToken
       }
-      type
-      createdAt
+      task {
+        items {
+          id
+          title
+          author
+          project
+          display
+          assigned
+          priority
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -87,6 +129,7 @@ export const createProject = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -114,6 +157,7 @@ export const updateProject = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -141,6 +185,7 @@ export const deleteProject = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -164,6 +209,7 @@ export const createTask = /* GraphQL */ `
       title
       author
       project
+      display
       assigned
       priority
       createdAt
@@ -181,6 +227,7 @@ export const updateTask = /* GraphQL */ `
       title
       author
       project
+      display
       assigned
       priority
       createdAt
@@ -198,6 +245,7 @@ export const deleteTask = /* GraphQL */ `
       title
       author
       project
+      display
       assigned
       priority
       createdAt
@@ -220,6 +268,7 @@ export const createUser = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -247,6 +296,7 @@ export const updateUser = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt
@@ -274,6 +324,7 @@ export const deleteUser = /* GraphQL */ `
           title
           author
           project
+          display
           assigned
           priority
           createdAt

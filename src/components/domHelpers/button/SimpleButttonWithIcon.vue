@@ -1,5 +1,5 @@
 <template>
-    <v-col>
+
         <v-btn @click="mainButtonMethod"
                style="background-color: rgba(255,255,255,0.51);"
                width="220"
@@ -9,7 +9,7 @@
                 <div>{{nameButton}}</div>
             </template>
         </v-btn>
-    </v-col>
+
 </template>
 
 <script>

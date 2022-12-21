@@ -1,5 +1,6 @@
 <template>
-    <Chat
+    <div>
+        <Chat
             :participants="participants"
             :myself="myself"
             :messages="messages"
@@ -24,10 +25,11 @@
             @onClose="onClose">
         <template v-slot:header>
             <div class="ma-2">
-                Мой чат. Проект № 1.
+                Мой чат к заданию {{chatsName}}.
             </div>
         </template>
     </Chat>
+    </div>
 </template>
 
 <script>
@@ -38,6 +40,13 @@
         name: "MyChat",
         components: {
             Chat
+        },
+        props:{
+            chatsName:{
+                type: String,
+                required: false,
+                default:()=>''
+            }
         },
         data: () => ({
             mini: true,
@@ -117,7 +126,7 @@
             asyncMode: false,
             toLoad: [
                 {
-                    content: 'Здравствуйте, Сергей, объясните пожалуйста пункт 1 задания 2?',
+                    content: `Здравствуйте, Сергей, объясните пожалуйста пункт 1 задания 2?`,
                     myself: false,
                     participantId: 2,
                     timestamp: {year: 2011, month: 3, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},

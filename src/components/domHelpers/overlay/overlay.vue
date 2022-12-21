@@ -1,11 +1,11 @@
 <template>
     <v-overlay :value="!overlay">
         <div>
-            <div class="d-flex flex flex-column align-center">
+            <div class="d-flex flex flex-column justify-center align-center">
                 <v-progress-circular
                         indeterminate
                         size="128">
-                    Нет ни одного дисплея
+                    <span class="text-center">Нет ни одного дисплея</span>
                 </v-progress-circular>
                 <v-divider></v-divider>
             </div>

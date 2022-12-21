@@ -1,13 +1,14 @@
 <template>
-    <div>
-        <taskHead style="padding-left: 7rem!important;"/>
-        <taskBody style="padding-left: 7rem!important;"/>
-    </div>
+    <v-container fluid>
+        <taskHead/>
+        <taskBody/>
+    </v-container>
+
 </template>
 
 <script>
-    import taskHead from '../../components/displayBoards/Head/index'
-    import taskBody from '../../components/displayBoards/Body/index'
+    import taskHead from '../components/displayBoards/Head/index'
+    import taskBody from '../components/displayBoards/Body/index'
 
 
     export default {

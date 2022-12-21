@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <v-container>
         <v-progress-linear
                 v-model="valueDeterminate"
                 color="blue"
         ></v-progress-linear>
-        <v-row class=" mt-8 d-flex  flex-row align-start justify-start ">
+        <v-row class=" mt-8 ml-16 d-flex  flex-row align-center justify-center ">
             <v-col>
                 <v-card v-if="valueDeterminate>=80"
                         class="mt-4"
@@ -28,7 +28,7 @@
 
                     <v-card-text class="pt-0">
                         <div class="text-h6 font-weight-light mb-2">
-                            Количество комметариев
+                            Количество комментариев
                         </div>
                         <div class="subheading font-weight-light grey--text">
                             ПАО "ПАО"
@@ -85,7 +85,7 @@
             </v-col>
         </v-row>
 
-    </div>
+    </v-container>
 </template>
 
 <script>

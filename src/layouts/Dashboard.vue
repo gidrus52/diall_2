@@ -1,21 +1,19 @@
 <template>
-    <div>
-        <DashboardDriveComponentLeft/>
-        <DashboardBodyComponent/>
-        <DashboardDriveComponentRight v-if="$route.fullPath!='/'"/>
-    </div>
-
-
+    <v-app>
+        <Left/>
+        <Body/>
+        <Right v-if="$route.fullPath!='/'"/>
+    </v-app>
 </template>
 
 <script>
-    import DashboardDriveComponentLeft from '../components/dashboard/Left'
-    import DashboardBodyComponent from '../components/dashboard/Body'
-    import DashboardDriveComponentRight from '../components/dashboard/Right'
+    import Left from '../components/dashboard/Left/Left'
+    import Body from '../components/dashboard/Body/Body'
+    import Right from '../components/dashboard/Right/Right'
 
     export default {
         name: "Dashboard",
-        components: {DashboardDriveComponentLeft, DashboardBodyComponent, DashboardDriveComponentRight},
+        components: {Left, Body, Right},
         data() {
             return {
                 drawer: null,

@@ -1,7 +1,9 @@
 <template>
-    <v-main>
-        <slot></slot>
-    </v-main>
+   <v-main>
+       <v-container fluid>
+           <slot></slot>
+       </v-container>
+   </v-main>
 </template>
 
 <script>

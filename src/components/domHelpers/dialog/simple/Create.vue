@@ -98,6 +98,14 @@
                 this.dialog = !true
                 this.titleString = ''
             })
+            eventBus.$on('success_create_project', (data) => {
+                this.dialog = !true
+                this.titleString = ''
+            })
+            eventBus.$on('success_create_task', (data) => {
+                this.dialog = !true
+                this.titleString = ''
+            })
         }
     }
 </script>

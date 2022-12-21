@@ -7,7 +7,8 @@
             dark
             shrink-on-scroll
             class=""
-    ><v-container class="flex d-flex flex-row align-center justify-center">
+    >
+        <v-container class="flex d-flex flex-row align-center justify-center">
             <v-row class="flex d-flex flex-row align-center justify-space-between">
                 <v-col class="col-xl-2 text-black">
                     {{displayName}}
@@ -100,17 +101,17 @@
 </template>
 
 <script>
-    import basic_name from '../../../../constants/basic_name'
-    import {eventBus} from "../../../../main";
+    import basic_name from '../../../constants/basic_name'
+    import {eventBus} from "../../../main";
     import {mapActions, mapGetters} from 'vuex'
-    import createDialog from '../../../domHelpers/dialog/simple/Create'
+    import createDialog from '../../domHelpers/dialog/simple/Create'
 
     export default {
         name: "Head",
         components: {createDialog},
         data() {
             return {
-                displayName:'',
+                displayName: '',
                 displayItem: {},
                 displayItems: [],
 
@@ -129,7 +130,7 @@
             }
         },
         computed: {
-            ...mapGetters(['displayList', 'right_menu','currentDisplayItem']),
+            ...mapGetters(['displayList', 'right_menu', 'currentDisplayItem','chatListGetter']),
             select_icon() {
                 return 'success'
             },
@@ -139,8 +140,11 @@
             displays() {
                 this.displayItems = this.displayList
             },
-            display(){
-              return this.currentDisplayItem
+            display() {
+                return this.currentDisplayItem
+            },
+            chat(){
+                return this.chatListGetter
             },
             right_menu_state() {
                 return this.right_menu
@@ -148,7 +152,7 @@
 
         },
         methods: {
-            ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject','zeroAction']),
+            ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject', 'zeroAction','ListTaskForChat']),
             addTable() {
                 eventBus.$emit('dialogStart', {name: 'Создать доску'})
             },
@@ -160,13 +164,23 @@
                 // // console.log('find bug 1')
                 await this.zeroAction('project')
                 this.currentDisplay(el)
+                this.ListTaskForChat(el)
             }
         },
         watch: {
-            displays() {},
+            displays() {
+            },
+            chat(e) {
+                console.log('chat')
+                console.log(e)
+            },
             display(e) {
                 this.displayName = e.name
-                this.displayItem = e }, right_menu_state() { }
+                this.displayItem = e
+                this.ListTaskForChat(e)
+            },
+            right_menu_state() {
+            }
         },
         mounted() {
             this.listDisplay()
@@ -178,9 +192,7 @@
             eventBus.$on('success_create_project', () => {
                 this.listProject(this.displayItem)
             })
-
         }
-
     }
 </script>
 

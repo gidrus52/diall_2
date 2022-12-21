@@ -16,7 +16,7 @@ export const routes = [
     {
         path: '/',
         name: pages.PAGE_NAME_DASHBOARDS,
-        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Dashboards'),
+        component: () => import(/* webpackChunkName: "about" */ '../views/Dashboards'),
         meta: {
             requiresAuth: true,
             layout: layouts.LAYOUT_DASHBOARDS
@@ -33,7 +33,7 @@ export const routes = [
     {
         path: '/display',
         name: pages.PAGE_NAME_TASKS,
-        component: () => import(/* webpackChunkName: "about" */ '../views/dashboards/Display'),
+        component: () => import(/* webpackChunkName: "about" */ '../views/Display'),
         meta: {
             requiresAuth: true,
             layout: layouts.LAYOUT_DASHBOARDS

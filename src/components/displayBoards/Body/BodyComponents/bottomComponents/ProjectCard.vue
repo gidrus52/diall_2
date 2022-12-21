@@ -43,7 +43,7 @@
 <script>
     import Button from '@/components/domHelpers/button/SimpleButttonWithIcon'
     import {mapActions, mapGetters} from 'vuex'
-    import * as graphQlQueries from '../../../../../../graphql/queries'
+    import * as graphQlQueries from '../../../../../graphql/queries'
     import {API} from 'aws-amplify'
     import TaskCard from './TaskCard'
 
