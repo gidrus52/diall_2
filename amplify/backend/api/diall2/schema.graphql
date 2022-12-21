@@ -16,6 +16,7 @@ type Project @model {
     name: String!
     task: [Task] @hasMany (indexName: "byProject", fields: ["id"])
     display: ID! @index(name: "byDisplay")
+    position: String!
 }
 type Task @model {
     id: ID!

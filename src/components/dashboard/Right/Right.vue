@@ -87,7 +87,11 @@
             rigth_menu_state(e) {
             },
             display(e) {
-                this.displayId = e.id
+                if(e){
+                    if(e.id){
+                        this.displayId = e.id
+                    }
+                }
             },
             async project(e){
                 this.progetcItem = e

@@ -22,8 +22,10 @@
 
         }
     }
+
 </script>
 <style lang="scss">
+
     /*.v-application--wrap {*/
     /*    min-height: 0vh !important;*/
     /*}*/

@@ -24,6 +24,7 @@
         computed: {
             ...mapGetters(['displayList']),
             displays() {
+                console.log()
                 return this.displayList
             },
             findOverlay() {
@@ -32,9 +33,8 @@
         },
         methods: {},
         watch: {
-            displays() {
-            }, findOverlay() {
-            }
+            displays() {},
+            findOverlay() {}
         },
         mounted() {
 

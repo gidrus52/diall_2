@@ -6,23 +6,11 @@
                 v-for="item in elements"
                 class="mb-2"
         >
-            <v-card-title class="text-h4">
-                <span>Название задания</span>
-            </v-card-title>
-            <v-card-title class="mt-0 pt-0 text-h5">
-                {{item.title}}
-            </v-card-title>
-
-            <v-card-subtitle>это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является
-                стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник
-                создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки
-            </v-card-subtitle>
-
-            <v-card-actions>
-                <v-btn text>
-                    Подробнее
-                </v-btn>
-            </v-card-actions>
+            <v-container>
+                <v-card-title style="color: rgba(246,246,246,0.75)" class="mt-0 pt-0 text-h7">
+                    {{item.title}}
+                </v-card-title>
+            </v-container>
         </v-card>
     </v-container>
 </template>

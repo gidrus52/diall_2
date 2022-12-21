@@ -3,7 +3,6 @@ import {API, graphqlOperation} from 'aws-amplify'
 import store from '../store/index'
 import * as mutations from '../graphql/mutations'
 import * as graphQlMutations from '../graphql/mutations'
-import * as graphQlQueries from "../graphql/queries";
 
 const findUsersData = async (fieldName, fieldEmail, arr) => {
     let user = {}
@@ -113,22 +112,31 @@ export default {
                 }
             }))).then(data => {
                 dispatch('create_event', {event: 'success_create_display'})
-
             }).catch(err => console.log(err))
         },
         createProject: ({commit, dispatch}, data) => {
-            console.log('createProject')
-            API.graphql((graphqlOperation(graphQlMutations.createProject, {
-                input: {
-                    ...data
+            let count = ["Срочно", "Текущие", "Назначенные"]
+            console.log(data)
+            count.forEach(async (el, index) => {
+                console.log(el, index)
+                API.graphql((graphqlOperation(graphQlMutations.createProject, {
+                    input: {
+                        name: el,
+                        display: data.display,
+                        position: index
+                    }
+                }))).then(data => {
+                    console.log(data)
+                }).catch(err => console.log(err))
+                if(index===count.length-1){
+                     dispatch('create_event', {event: 'success_create_project'})
                 }
-            }))).then(data => {
-                dispatch('create_event', {event: 'success_create_project'})
-                console.log(data)
-            }).catch(err => console.log(err))
+            })
+
+
         },
         createTask: async ({commit, dispatch}, data) => {
-            console.log(data)
+
             let user = store.getters.is_current_user.username
 
             API.graphql((graphqlOperation(mutations.createTask, {

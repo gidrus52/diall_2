@@ -10,11 +10,11 @@
     >
         <v-list-item style="height: 75px">
             <v-list-item-avatar>
-                <v-img width="150" src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+                <v-img width="150" :src="userAtributes.avatar"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
-                <v-list-item-title>Сергей </v-list-item-title>
+                <v-list-item-title>{{userAtributes.name}}</v-list-item-title>
             </v-list-item-content>
             <mdiRoundButton
                     :name-icon="'mdi-pencil'" :property-data="propertyData"/>
@@ -27,22 +27,22 @@
         <v-divider></v-divider>
         <v-list>
 
-                <template >
-                    <v-list-item
-                            v-for="item in navigationItems"
-                            :key="item.title"
-                            link
-                            :to="item.path"
-                    >
-                        <v-list-item-icon>
-                            <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-icon>
+            <template>
+                <v-list-item
+                        v-for="item in navigationItems"
+                        :key="item.title"
+                        link
+                        :to="item.path"
+                >
+                    <v-list-item-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
 
-                        <v-list-item-content>
-                            <v-list-item-title>{{ item.title }}</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </template>
 
         </v-list>
         <template v-slot:append>
@@ -102,16 +102,24 @@
             mdiRoundButton
         },
         computed: {
-            ...mapGetters(['is_current_user']),
+            ...mapGetters(['is_current_user', 'is_current_users_attributes']),
             user() {
                 return this.is_current_user
+            },
+            userAtributes() {
+                console.log('userAtributes')
+                return this.is_current_users_attributes
             }
         },
-        methods:{
-          ...mapActions(['getUser'])
+        methods: {
+            ...mapActions(['getUserDataAtributes'])
+        },
+        watch: {
+
         },
         mounted() {
-            console.log(this.is_current_user)
+            this.getUserDataAtributes(this.is_current_user)
+
         },
         created() {
 

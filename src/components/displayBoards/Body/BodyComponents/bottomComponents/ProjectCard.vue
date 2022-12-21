@@ -1,32 +1,25 @@
 <template>
     <v-card
-                min-height="700"
-                width="450"
-                class="ml-3 mr-6"
-                color="grey"
+            min-height="700"
+            width="450"
+            class="ml-3 mr-6"
+            color="grey"
+    >
+        <v-system-bar
+                color="white"
+                dark
+                height="45"
         >
-            <v-system-bar
-                    color="white"
-                    dark
-                    height="45"
-            >
+            <v-container class="d-flex flex justify-space-between">
                 <v-toolbar-title class="text-black">{{projectItem.name}}</v-toolbar-title>
-                <v-spacer></v-spacer>
-
                 <Button :element="projectItem" :buttonName="'Создать задание'"/>
-            </v-system-bar>
+            </v-container>
+        </v-system-bar>
+        <v-container>
+            <TaskCard :tasks="taskItem"></TaskCard>
+        </v-container>
 
-            <v-row class="flex d-flex flex-column">
-                <v-col>
-                    <TaskCard :tasks="taskItem"></TaskCard>
-                </v-col>
-                <v-row>
-                    <v-col class="">
-
-                    </v-col>
-                </v-row>
-            </v-row>
-        </v-card>
+    </v-card>
 </template>
 
 <script>

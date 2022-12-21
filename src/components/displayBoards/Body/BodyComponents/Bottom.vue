@@ -2,7 +2,7 @@
     <v-container fluid class="">
         <v-row>
             <v-col cols="1" class="flex d-flex flex-column align-start justify-start">
-                <Button v-for="item in buttonsName" :buttonName="item"/>
+                <Button v-for="item in buttonsName" :element="displayItem" :buttonName="item"/>
             </v-col>
         </v-row>
         <v-row class="d-flex flex  flex-row align-start justify-start ">
@@ -62,13 +62,11 @@
         created() {
             eventBus.$on('taskRestore', () => {
                 this.projectItem = []
-                // store.state.user_action.projectList = []
                 this.listProject(this.displayItem)
 
             }),
                 eventBus.$on('success_create_task', () => {
                     this.projectItem = []
-                    // store.state.user_action.projectList = []
                     this.listProject(this.displayItem)
 
                 })

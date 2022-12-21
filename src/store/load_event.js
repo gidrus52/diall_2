@@ -12,8 +12,7 @@ export default {
         create_event(state,data){
             if(data.event=='success_create_display'){
                 console.log('event of create was done')
-                eventBus.$emit('success_create_display', {
-                })
+                eventBus.$emit('success_create_display')
             }
             if(data.event=='success_create_project'){
                 console.log('event of create was done')

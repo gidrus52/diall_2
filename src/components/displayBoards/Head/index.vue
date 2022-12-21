@@ -2,57 +2,29 @@
     <v-app-bar
             scroll-target="#scrolling-techniques-3"
             color="#6A76AB"
-            height="125"
+            height="15"
             app
             dark
             shrink-on-scroll
             class=""
     >
-        <v-container class="flex d-flex flex-row align-start justify-start">
-            <v-row class="flex d-flex flex-row align-center justify-space-between">
-                <v-col cols="2" class="col-xl-2 text-black">
-                    {{displayName}}
-                </v-col>
+        <v-toolbar-title class="ml-6"> {{displayName}}
 
-                <v-col class="flex d-flex justify-start">
-                    <v-badge
-                            bordered
-                            bottom
-                            left
-                            color="green"
-                            dot
-                            offset-x="10"
-                            offset-y="10"
-                    >
-                        <v-avatar size="35">
-                            <img
-                                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                    alt="John"
-                            >
-                        </v-avatar>
-                    </v-badge>
-                    
-                    <v-divider class="ml-4" style="width: 9px !important; background-color: grey !important;"
-                               vertical></v-divider>
-                </v-col>
-
-
-            </v-row>
-        </v-container>
-
-
-        <v-spacer/>
-        <v-col class="flex d-flex justify-end align-end" v-if="!right_menu_state">
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-container class="flex d-flex justify-end align-end" v-if="!right_menu_state">
             <v-btn @click="right_menu_switcher" outlined icon>
                 <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
-        </v-col>
-
+        </v-container>
         <template v-slot:extension>
+
             <v-tabs align-with-title
                     v-model="currentTabNumber"
+
             >
-                <v-tab style="width: 250px;" @click="tabEvent(item)" v-for="(item,index) in displayItems" :key="index" class="border">
+                <v-tab style="width: 250px;" @click="tabEvent(item)" v-for="(item,index) in displayItems" :key="index"
+                       class="border">
 
                     <span>{{item.name}}</span>
                     <template>
@@ -85,7 +57,6 @@
 </template>
 
 <script>
-    import basic_name from '../../../constants/basic_name'
     import {eventBus} from "../../../main";
     import {mapActions, mapGetters} from 'vuex'
     import createDialog from '../../domHelpers/dialog/simple/Create'
@@ -114,29 +85,25 @@
             }
         },
         computed: {
-            ...mapGetters(['displayList', 'right_menu', 'currentDisplayItem','chatListGetter']),
-            select_icon() {
-                return 'success'
-            },
-            dialog_name() {
-                return basic_name
-            },
-            displays() {
-                this.displayItems = this.displayList
+            ...mapGetters(['displayList', 'right_menu', 'currentDisplayItem', 'chatListGetter', 'is_current_users_attributes']),
+            user() {
+                return this.is_current_users_attributes
             },
             display() {
                 return this.currentDisplayItem
             },
-            chat(){
+            displays() {
+                this.displayItems = this.displayList
+            },
+            chat() {
                 return this.chatListGetter
             },
             right_menu_state() {
                 return this.right_menu
-            }
-
+            },
         },
         methods: {
-            ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject', 'zeroAction','ListTaskForChat']),
+            ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject', 'zeroAction', 'ListTaskForChat']),
             addTable() {
                 eventBus.$emit('dialogStart', {name: 'Создать дисплей'})
             },
@@ -144,24 +111,22 @@
                 this.right_menu_action(true)
             },
             async tabEvent(el) {
-                console.log(el)
-                // // console.log('find bug 1')
                 await this.zeroAction('project')
-                this.currentDisplay(el)
-                this.ListTaskForChat(el)
+                await this.currentDisplay(el)
+                await this.ListTaskForChat(el)
             }
         },
         watch: {
             displays() {
-            },
-            chat(e) {
-                console.log('chat')
-                console.log(e)
+            }, chat() {
             },
             display(e) {
-                this.displayName = e.name
-                this.displayItem = e
-                this.ListTaskForChat(e)
+                if (e) {
+                    this.displayName = e.name
+                    this.displayItem = e
+                    this.ListTaskForChat(e)
+                }
+
             },
             right_menu_state() {
             }
@@ -174,7 +139,9 @@
                 this.listDisplay()
             })
             eventBus.$on('success_create_project', () => {
+                console.log(this.displayItem)
                 this.listProject(this.displayItem)
+
             })
             eventBus.$on('success_create_task', () => {
                 this.zeroAction('project')

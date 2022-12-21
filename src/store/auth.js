@@ -11,14 +11,13 @@ export default {
         is_admin: null,
         is_user: null,
         is_JWTtoken: null,
-        user_atributes: null
     },
     getters: {
         is_current_user: state => state.is_current_user,
         is_admin: state => state.is_admin,
         is_user: state => state.is_user,
         is_JWTtoken: state => state.is_JWTtoken,
-        is_current_users_attributes: state => state.user_atributes
+
     },
     mutations: {
         SET_USER: (state, data) => {
@@ -27,14 +26,9 @@ export default {
         },
         SET_CURRENT_USER: (state, data) => state.is_current_user = data,
         SET_ADMIN_CLAIM: (state, data) => {
-            console.log('store')
-            console.log(store)
             state.is_JWTtoken = data.signInUserSession.accessToken.jwtToken
             data.compare ? (state.is_admin = true) && (state.is_user = false) : (state.is_admin = false) && (state.is_user = true)
         },
-        SET_USER_ATTRIBUTES: (state, data) => {
-            console.log(data)
-        }
     },
     actions: {
         sign_in: async ({commit, dispatch}, data) => {
@@ -61,7 +55,6 @@ export default {
             await Auth.signOut().then().catch()
         },
         set_current_user: async ({commit, dispatch}, data) => {
-
             commit("SET_CURRENT_USER", data)
         },
         setAdmin({commit, dispatch}, data) {
@@ -75,10 +68,6 @@ export default {
             }
             compare_group(cognito_properties.adminGroup)
         },
-        getUserDataAtributes:async ()=>{
-             API.graphql((graphqlOperation(graphQlQueries.getUser))).then(async data => {
-                // await commit('SET_USER_ATTRIBUTES', data)
-            }).catch(err => console.log(err))
-        }
+
     }
 }

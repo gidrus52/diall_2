@@ -5,7 +5,6 @@
                 max-width="600"
                 v-model="dialog"
                 dark>
-
             <template v-slot:default="dialog">
                 <v-card>
                     <v-toolbar>
@@ -55,56 +54,58 @@
             }
         },
         computed: {
-            ...mapGetters(['displayList','currentDisplayItem']),
+            ...mapGetters(['displayList', 'currentDisplayItem']),
             lists() {
                 return this.displayList
             },
-            findTrue(){
-                return this.nameInputValue!=null?this.nameInputValue.length?false:true:true
+            findTrue() {
+                return this.nameInputValue != null ? this.nameInputValue.length ? false : true : true
             },
-            display(){
+            display() {
                 return this.currentDisplayItem
             }
         },
         watch: {
-            lists() {},
-            display() {},
+            lists() {
+            },
+            display() {
+            },
         },
         methods: {
-            ...mapActions(['createDisplay', 'createProject','createTask']),
+            ...mapActions(['createDisplay', 'createProject', 'createTask']),
             makeAction() {
                 (this.nameInputValue != '' && (this.titleString === 'Создать дисплей' && this.createDisplay({
-                    name: this.nameInputValue
-                }) || this.titleString === 'Добавить проектё' && this.createProject({
-                    name: this.nameInputValue, display: this.currentDisplayItem.id
-                }) || this.titleString === 'Создать мой первый дисплей' && this.createDisplay({
-                    name: this.nameInputValue
+                        name: this.nameInputValue
+                    }) || this.titleString === 'Добавить проект' && this.createProject({
+                        name: this.nameInputValue, display: this.currentDisplayItem.id
+                    }) || this.titleString === 'Создать мой первый дисплей' && this.createDisplay({
+                        name: this.nameInputValue
                     }) || this.titleString === 'Создать задание' && this.createTask({
-                    name: this.nameInputValue, targetEl: this.targetEl
-                })
+                        name: this.nameInputValue, targetEl: this.targetEl
+                    })
                 ))
-
             }
-        }
-        ,
+        },
         created() {
             eventBus.$on('dialogStart', (data) => {
                 this.dialog = true
                 this.titleString = data.name
                 this.targetEl = data.currentEl
-                console.log(data)
+                this.nameInputValue = ''
             })
-            eventBus.$on('success_create_display', (data) => {
+            eventBus.$on('success_create_display', () => {
                 this.dialog = !true
-                this.titleString = ''
+                this.nameInputValue = ''
             })
             eventBus.$on('success_create_project', (data) => {
                 this.dialog = !true
                 this.titleString = ''
+                this.nameInputValue = ''
             })
             eventBus.$on('success_create_task', (data) => {
                 this.dialog = !true
                 this.titleString = ''
+                this.nameInputValue = ''
             })
         }
     }
