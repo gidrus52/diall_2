@@ -121,9 +121,9 @@ export default {
                 console.log(el, index)
                 API.graphql((graphqlOperation(graphQlMutations.createProject, {
                     input: {
-                        name: el,
+                        name: data.name,
                         display: data.display,
-                        position: index
+                        position: el
                     }
                 }))).then(data => {
                     console.log(data)
