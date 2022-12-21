@@ -65,6 +65,12 @@
                 // store.state.user_action.projectList = []
                 this.listProject(this.displayItem)
 
+            }),
+                eventBus.$on('success_create_task', () => {
+                this.projectItem = []
+                // store.state.user_action.projectList = []
+                this.listProject(this.displayItem)
+
             })
         }
     }
