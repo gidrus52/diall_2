@@ -40,7 +40,7 @@
                     <v-divider class="ml-4" style="width: 9px !important; background-color: grey !important;"
                                vertical></v-divider>
                 </v-col>
-               
+
 
             </v-row>
         </v-container>

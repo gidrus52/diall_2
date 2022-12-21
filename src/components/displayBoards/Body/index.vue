@@ -3,7 +3,7 @@
     <div>
         <v-container fluid class="fill-height">
             <Top class="mb-2 mt-2"/>
-            <Bottom style="margin-left: 0 !important;"/>
+            <Bottom/>
             <Overlay :overlay="overlay"></Overlay>
         </v-container>
     </div>

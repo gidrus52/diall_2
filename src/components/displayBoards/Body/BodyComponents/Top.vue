@@ -1,5 +1,5 @@
 <template>
-    <v-row  class="flex d-flex flex-row align-center justify-start">
+    <v-row  class="ml-7 flex d-flex flex-row align-center justify-start">
         <v-col cols="1" xl="1" sm="2" md="3" class="flex d-flex">
             <div class="flex d-flex flex-row justify-end  mr-1" v-select-target-el
             >

@@ -3,7 +3,7 @@
         <v-btn @click="mainButtonMethod"
                style="background-color: rgba(255,255,255,0.51);"
                width="220"
-               class="mb-2 ml-2 d-flex flex-row justify-start pl-2 transparently-button">
+               class="mb-2 ml-8 d-flex flex-row justify-start pl-2 transparently-button">
             <template>
                 <v-icon>mdi-plus</v-icon>
                 <div>{{nameButton}}</div>

@@ -1,9 +1,9 @@
 <template>
-    <v-app>
+    <div>
         <Left/>
         <Body/>
         <Right v-if="$route.fullPath!='/'"/>
-    </v-app>
+    </div>
 </template>
 
 <script>

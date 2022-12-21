@@ -1,6 +1,6 @@
 <template>
     <v-main app>
-        <v-container fluid class="ma-0 pa-0" >
+        <v-container fluid >
             <router-view/>
         </v-container>
     </v-main>
