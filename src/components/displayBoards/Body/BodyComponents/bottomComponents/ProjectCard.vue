@@ -1,6 +1,6 @@
 <template>
 
-    <v-col class="d-flex flex-row  justify-start" cols="3">
+    <v-col class="d-flex flex-row  justify-start" cols="2" md="3">
         <v-card
                 min-height="660"
                 width="450"

@@ -57,7 +57,7 @@
             <v-tabs align-with-title
                     v-model="currentTabNumber"
             >
-                <v-tab @click="tabEvent(item)" v-for="(item,index) in displayItems" :key="index" class="border">
+                <v-tab style="width: 250px;" @click="tabEvent(item)" v-for="(item,index) in displayItems" :key="index" class="border">
 
                     <span>{{item.name}}</span>
                     <template>
