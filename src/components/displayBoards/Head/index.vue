@@ -182,6 +182,7 @@
                 this.listProject(this.displayItem)
             })
             eventBus.$on('success_create_task', () => {
+                this.zeroAction('project')
                 this.ListTaskForChat(this.displayItem)
             })
         }

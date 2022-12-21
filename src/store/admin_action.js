@@ -164,6 +164,9 @@ export default {
             }))).then(data => {
                 console.log(data)
                 dispatch('create_event', {event: 'success_create_task'})
+
+
+
             })
         },
         zeroAction: async ({commit, dispatch}, data) => {
