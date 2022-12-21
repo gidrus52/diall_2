@@ -1,11 +1,11 @@
 <template>
     <v-container fluid class="">
-        <v-row>
+        <v-row class="d-flex flex  flex-row align-start justify-center">
             <v-col cols="1" class="flex d-flex flex-column align-start justify-start">
                 <Button v-for="item in buttonsName" :element="displayItem" :buttonName="item"/>
             </v-col>
         </v-row>
-        <v-row class="d-flex flex  flex-row align-start justify-start ">
+        <v-row class="d-flex flex  flex-row align-start justify-center">
                 <Card v-for="item in projectItem" :projectItem="item" class=""/>
         </v-row>
     </v-container>
