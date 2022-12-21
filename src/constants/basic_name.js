@@ -1,6 +1,6 @@
 const basic_name = {
     create_dialog_table:{
-        title: "Создать доску",
+        title: "Создать дисплей",
         input_label: "Введите название таблицы"
     }
 

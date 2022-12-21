@@ -62,7 +62,6 @@ export default {
         listDisplay: async ({commit, dispatch}) => {
             API.graphql((graphqlOperation(graphQlQueries.listDisplays))).then(async data => {
                 await commit('SET_DISPLAY_LIST', data)
-
                 dispatch('currentDisplay', data.data.listDisplays.items[0])
             }).catch(err => console.log(err))
         },
@@ -86,6 +85,12 @@ export default {
             }).catch(err => console.log(err))
         },
         listTasks: async ({commit, dispatch}) => {
+            console.log('list')
+            console.log('list')
+            console.log('list')
+            console.log('list')
+            console.log('list')
+            console.log('list')
             API.graphql((graphqlOperation(graphQlQueries.listTasks))).then(async data => {
                 await commit('SET_TASK_LIST', data)
             }).catch(err => console.log(err))

@@ -154,7 +154,7 @@
         methods: {
             ...mapActions(['dialogStart', 'listDisplay', 'right_menu_action', 'currentDisplay', 'listProject', 'zeroAction','ListTaskForChat']),
             addTable() {
-                eventBus.$emit('dialogStart', {name: 'Создать доску'})
+                eventBus.$emit('dialogStart', {name: 'Создать дисплей'})
             },
             right_menu_switcher() {
                 this.right_menu_action(true)
@@ -191,6 +191,9 @@
             })
             eventBus.$on('success_create_project', () => {
                 this.listProject(this.displayItem)
+            })
+            eventBus.$on('success_create_task', () => {
+                this.ListTaskForChat(this.displayItem)
             })
         }
     }

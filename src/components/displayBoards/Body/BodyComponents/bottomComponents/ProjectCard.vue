@@ -2,7 +2,7 @@
 
     <v-col class="d-flex flex-row  justify-start" cols="3">
         <v-card
-                height="660"
+                min-height="660"
                 width="450"
                 class="ml-0 mr-2"
                 color="grey"
@@ -46,6 +46,7 @@
     import * as graphQlQueries from '../../../../../graphql/queries'
     import {API} from 'aws-amplify'
     import TaskCard from './TaskCard'
+    import {eventBus} from "../../../../../main";
 
     export default {
         name: "ProjectCard",
@@ -76,7 +77,8 @@
         },
         watch: {
             async tasks(e) {
-
+                console.log('this.taskItem = e')
+                this.taskItem = e
             }
         },
         mounted() {
@@ -88,6 +90,12 @@
             API.graphql({query: graphQlQueries.listTasks, variables: {filter: filter}}).then(data => {
                 this.taskItem = data.data.listTasks.items
 
+            })
+        },
+        created(){
+            eventBus.$on('success_create_task', (data) => {
+                console.log('fssfds')
+                this.listTasks()
             })
         }
 

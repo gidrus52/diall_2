@@ -73,7 +73,7 @@
         methods: {
             ...mapActions(['createDisplay', 'createProject','createTask']),
             makeAction() {
-                (this.nameInputValue != '' && (this.titleString === 'Создать доску' && this.createDisplay({
+                (this.nameInputValue != '' && (this.titleString === 'Создать дисплей' && this.createDisplay({
                     name: this.nameInputValue
                 }) || this.titleString === 'Создать колонку' && this.createProject({
                     name: this.nameInputValue, display: this.currentDisplayItem.id

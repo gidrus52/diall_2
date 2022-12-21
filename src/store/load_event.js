@@ -19,6 +19,10 @@ export default {
                 console.log('event of create was done')
                 eventBus.$emit('success_create_project')
             }
+            if(data.event=='success_create_task'){
+                console.log('event of create was done')
+                eventBus.$emit('success_create_task')
+            }
         },
 
     }
