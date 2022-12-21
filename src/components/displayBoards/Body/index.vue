@@ -1,11 +1,11 @@
 <template>
-
-
-    <v-container  id="app" fluid  style="background: #2c3e50; "class="fill-height">
-        <Top class="mb-2 mt-2"/>
-        <Bottom style="margin-left: 0 !important;"/>
-        <Overlay :overlay="overlay"></Overlay>
-    </v-container>
+    <v-main fluid style="background: #2c3e50;"class="fill-height">
+        <v-container fluid  class="fill-height">
+            <Top class="mb-2 mt-2"/>
+            <Bottom style="margin-left: 0 !important;"/>
+            <Overlay :overlay="overlay"></Overlay>
+        </v-container>
+    </v-main>
 
 </template>
 

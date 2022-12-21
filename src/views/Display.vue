@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import taskHead from '../../components/dashboard/displayBoards/Head/index'
-    import taskBody from '../../components/dashboard/displayBoards/Body/index'
+    import taskHead from '../../components/displayBoards/Head/index'
+    import taskBody from '../../components/displayBoards/Body/index'
 
 
     export default {

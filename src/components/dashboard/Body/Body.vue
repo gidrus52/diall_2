@@ -1,7 +1,7 @@
 <template>
-        <keep-alive>
-            <router-view></router-view>
-        </keep-alive>
+    <div>
+        <router-view/>
+    </div>
 </template>
 
 <script>

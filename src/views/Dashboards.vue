@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-left: 7rem!important;" class="">
+    <div>
         <v-progress-linear
                 v-model="valueDeterminate"
                 color="blue"
