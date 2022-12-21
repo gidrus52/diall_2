@@ -40,18 +40,7 @@
                     <v-divider class="ml-4" style="width: 9px !important; background-color: grey !important;"
                                vertical></v-divider>
                 </v-col>
-                <v-col class="col-xl-5 flex d-flex flex-row justify-end align-end">
-                    <v-container class="flex d-flex flex-row justify-center align-center">
-                        <v-text-field
-                                hide-details
-                                prepend-icon="mdi-magnify"
-                                single-line
-                        ></v-text-field>
-                        <v-btn icon>
-                            <v-icon>mdi-dots-vertical</v-icon>
-                        </v-btn>
-                    </v-container>
-                </v-col>
+               
 
             </v-row>
         </v-container>
