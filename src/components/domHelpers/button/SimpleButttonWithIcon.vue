@@ -1,12 +1,11 @@
 <template>
-
         <v-btn @click="mainButtonMethod"
-               style="background-color: rgba(255,255,255,0.51);"
-               width=""
-               class="mb-2 ml-8 d-flex flex-row justify-start pl-2 transparently-button">
+               color="primary"
+               outlined
+               class="">
             <template>
-                <v-icon>mdi-plus</v-icon>
-                <span style="font-size: 12px">
+
+                <span>
                     {{nameButton}}
                 </span>
             </template>

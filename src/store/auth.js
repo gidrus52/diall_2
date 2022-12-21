@@ -1,7 +1,8 @@
 import {AmplifyEventBus} from 'aws-amplify-vue';
-import {Auth} from 'aws-amplify';
+import {API, Auth, graphqlOperation} from 'aws-amplify';
 import store from './index';
 import {cognito_properties} from "../constants/cognito_s_variable";
+import * as graphQlQueries from "../graphql/queries";
 
 export default {
     state: {
@@ -10,12 +11,14 @@ export default {
         is_admin: null,
         is_user: null,
         is_JWTtoken: null,
+        user_atributes: null
     },
     getters: {
         is_current_user: state => state.is_current_user,
         is_admin: state => state.is_admin,
         is_user: state => state.is_user,
-        is_JWTtoken: state => state.is_JWTtoken
+        is_JWTtoken: state => state.is_JWTtoken,
+        is_current_users_attributes: state => state.user_atributes
     },
     mutations: {
         SET_USER: (state, data) => {
@@ -28,6 +31,9 @@ export default {
             console.log(store)
             state.is_JWTtoken = data.signInUserSession.accessToken.jwtToken
             data.compare ? (state.is_admin = true) && (state.is_user = false) : (state.is_admin = false) && (state.is_user = true)
+        },
+        SET_USER_ATTRIBUTES: (state, data) => {
+            console.log(data)
         }
     },
     actions: {
@@ -69,5 +75,10 @@ export default {
             }
             compare_group(cognito_properties.adminGroup)
         },
+        getUserDataAtributes:async ()=>{
+             API.graphql((graphqlOperation(graphQlQueries.getUser))).then(async data => {
+                // await commit('SET_USER_ATTRIBUTES', data)
+            }).catch(err => console.log(err))
+        }
     }
 }

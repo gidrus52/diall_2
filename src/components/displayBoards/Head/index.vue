@@ -14,9 +14,6 @@
                     {{displayName}}
                 </v-col>
 
-                <v-col cols="1" class="col-xl-1">
-                    <v-icon color="grey">mdi-menu</v-icon>
-                </v-col>
                 <v-col class="flex d-flex justify-start">
                     <v-badge
                             bordered
@@ -34,9 +31,7 @@
                             >
                         </v-avatar>
                     </v-badge>
-                    <v-btn class="ml-1" dark icon outlined color="#bbbbbb" height="35" width="35">
-                        <v-icon dark color="#bbbbbb">mdi-plus</v-icon>
-                    </v-btn>
+                    
                     <v-divider class="ml-4" style="width: 9px !important; background-color: grey !important;"
                                vertical></v-divider>
                 </v-col>

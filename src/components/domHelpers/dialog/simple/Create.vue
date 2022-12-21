@@ -75,7 +75,7 @@
             makeAction() {
                 (this.nameInputValue != '' && (this.titleString === 'Создать дисплей' && this.createDisplay({
                     name: this.nameInputValue
-                }) || this.titleString === 'Создать колонку' && this.createProject({
+                }) || this.titleString === 'Добавить проектё' && this.createProject({
                     name: this.nameInputValue, display: this.currentDisplayItem.id
                 }) || this.titleString === 'Создать мой первый дисплей' && this.createDisplay({
                     name: this.nameInputValue

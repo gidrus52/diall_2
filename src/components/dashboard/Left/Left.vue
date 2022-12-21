@@ -82,6 +82,7 @@
 
 <script>
     import mdiRoundButton from '../../domHelpers/button/mdiRoundButton'
+    import {mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "DashboardDriveComponentLeft",
@@ -92,10 +93,8 @@
                 event: 'leftMenu'
             },
             navigationItems: [
-                {title: 'Проекты', icon: 'mdi-view-dashboard', path: 'display'},
-                {title: 'Задания', icon: 'mdi-image'},
-                // {title: 'О приложении', icon: 'mdi-help-box'},
                 {title: 'Главная страница', icon: 'mdi-checkbox-blank-outline', path: '/'},
+                {title: 'Проекты', icon: 'mdi-view-dashboard', path: 'display'},
             ],
             right: null,
         }),
@@ -103,12 +102,16 @@
             mdiRoundButton
         },
         computed: {
-            wathMini() {
-                return this.mini
+            ...mapGetters(['is_current_user']),
+            user() {
+                return this.is_current_user
             }
         },
+        methods:{
+          ...mapActions(['getUser'])
+        },
         mounted() {
-
+            console.log(this.is_current_user)
         },
         created() {
 

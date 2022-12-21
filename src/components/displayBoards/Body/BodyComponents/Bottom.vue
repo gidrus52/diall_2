@@ -1,10 +1,12 @@
 <template>
     <v-container fluid class="">
-        <v-row class="d-flex  flex-row align-start justify-start ">
-            <Card v-for="item in projectItem" :projectItem="item" class=""/>
+        <v-row>
             <v-col cols="1" class="flex d-flex flex-column align-start justify-start">
                 <Button v-for="item in buttonsName" :buttonName="item"/>
             </v-col>
+        </v-row>
+        <v-row class="d-flex flex  flex-row align-start justify-start ">
+                <Card v-for="item in projectItem" :projectItem="item" class=""/>
         </v-row>
     </v-container>
 </template>
@@ -22,9 +24,7 @@
             displayItem: undefined,
             projectItem: [],
             buttonsName: [
-                'Создать колонку',
-                'Создать сводку',
-                'Создать зеркало',
+                'Добавить проект',
             ]
         }),
         components: {
@@ -67,11 +67,11 @@
 
             }),
                 eventBus.$on('success_create_task', () => {
-                this.projectItem = []
-                // store.state.user_action.projectList = []
-                this.listProject(this.displayItem)
+                    this.projectItem = []
+                    // store.state.user_action.projectList = []
+                    this.listProject(this.displayItem)
 
-            })
+                })
         }
     }
 </script>

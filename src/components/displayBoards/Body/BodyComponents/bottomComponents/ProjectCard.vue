@@ -1,12 +1,9 @@
 <template>
-
-    <v-col class="d-flex flex-row  justify-start" cols="2" md="3">
-        <v-card
-                min-height="660"
+    <v-card
+                min-height="700"
                 width="450"
-                class="ml-0 mr-2"
+                class="ml-3 mr-6"
                 color="grey"
-                style="background-color: rgba(66,185,131,0.25)"
         >
             <v-system-bar
                     color="white"
@@ -16,28 +13,24 @@
                 <v-toolbar-title class="text-black">{{projectItem.name}}</v-toolbar-title>
                 <v-spacer></v-spacer>
 
-                <v-icon large>mdi-menu</v-icon>
+                <Button :element="projectItem" :buttonName="'Создать задание'"/>
             </v-system-bar>
 
-            <v-container>
+            <v-row class="flex d-flex flex-column">
+                <v-col>
+                    <TaskCard :tasks="taskItem"></TaskCard>
+                </v-col>
                 <v-row>
-                    <v-col>
-                        <TaskCard :tasks="taskItem"></TaskCard>
-                    </v-col>
+                    <v-col class="">
 
-                    <v-col  class="flex align-start">
-                        <Button :element="projectItem" :buttonName="'Создать задание'"/>
                     </v-col>
                 </v-row>
-            </v-container>
+            </v-row>
         </v-card>
-    </v-col>
-
-
 </template>
 
 <script>
-    import Button from '@/components/domHelpers/button/SimpleButttonWithIcon'
+    import Button from '../../../../domHelpers/button/SimpleButttonWithIcon'
     import {mapActions, mapGetters} from 'vuex'
     import * as graphQlQueries from '../../../../../graphql/queries'
     import {API} from 'aws-amplify'
@@ -88,7 +81,7 @@
 
             })
         },
-        created(){
+        created() {
             eventBus.$on('success_create_task', (data) => {
                 console.log('fssfds')
                 this.listTasks()

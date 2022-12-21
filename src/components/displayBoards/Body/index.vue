@@ -1,27 +1,20 @@
 <template>
-
-    <div>
-        <v-container fluid>
-            <Top class="mb-2 mt-2"/>
+        <v-container fluid style="">
             <Bottom/>
             <Overlay :overlay="overlay"></Overlay>
         </v-container>
-    </div>
-
-
 </template>
 
 <script>
-    import Top from "./BodyComponents/Top"
+
     import Bottom from "./BodyComponents/Bottom"
     import Overlay from "../../domHelpers/overlay/overlay"
     import {mapGetters} from 'vuex'
 
-
     export default {
         name: "Body",
         components: {
-            Top, Bottom, Overlay
+             Bottom, Overlay
         },
         data() {
             return {

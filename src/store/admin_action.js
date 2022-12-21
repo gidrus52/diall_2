@@ -82,18 +82,11 @@ export default {
                 }
 
             }).then(data => {
-
+                console.log(data)
 
             })
         },
-        getUserNoCognito: async ({commit, dispatch}, userData) => {
-            API.graphql((graphqlOperation(graphQlQueries.getUser, {
-                id: userData.id
-            })))
-                .then(async data => await commit('SET_USER_NOCOGNITO', data))
-                .catch(err => console.log(err))
 
-        },
         deleteUser: async ({commit, dispatch}, userData) => {
             const jwt = store.getters['is_JWTtoken']
             API.post(queries.AdminQueries.name, queries.AdminQueries.deleteUser.path, {
@@ -112,21 +105,7 @@ export default {
                 dispatch('listUser')
             })).catch(err => console.log(err))
         },
-        listUserEvents: async (data) => {
-            const jwt = store.getters['is_JWTtoken']
 
-            API.post(queries.AdminQueries.name, queries.AdminQueries.listEvents.path, {
-                headers: {
-                    'Authorization': `${jwt}`
-                },
-                body: {
-                    username: 'e2f774a3-710e-47e7-bb80-5b879dd3a7be'
-                }
-
-            }).then(data => {
-
-            })
-        },
         createDisplay: ({commit, dispatch}, data) => {
             API.graphql((graphqlOperation(graphQlMutations.createDisplay, {
                 input: {
@@ -164,9 +143,6 @@ export default {
             }))).then(data => {
                 console.log(data)
                 dispatch('create_event', {event: 'success_create_task'})
-
-
-
             })
         },
         zeroAction: async ({commit, dispatch}, data) => {
