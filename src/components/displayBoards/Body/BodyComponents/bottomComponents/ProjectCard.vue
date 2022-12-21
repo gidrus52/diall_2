@@ -21,15 +21,11 @@
 
             <v-container>
                 <v-row>
-                    <v-col cols="12">
+                    <v-col>
                         <TaskCard :tasks="taskItem"></TaskCard>
                     </v-col>
-                </v-row>
-            </v-container>
 
-            <v-container>
-                <v-row dense>
-                    <v-col cols="12">
+                    <v-col  class="flex align-start">
                         <Button :element="projectItem" :buttonName="'Создать задание'"/>
                     </v-col>
                 </v-row>

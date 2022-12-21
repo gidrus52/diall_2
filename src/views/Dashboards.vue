@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        
+
         <v-row class=" mt-8 ml-16 d-flex  flex-row align-center justify-center ">
             <v-col>
                 <v-card v-if="valueDeterminate>=80"
