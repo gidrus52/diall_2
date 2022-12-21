@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <v-container fluid class="fill-height">
+        <v-container fluid>
             <Top class="mb-2 mt-2"/>
             <Bottom/>
             <Overlay :overlay="overlay"></Overlay>
