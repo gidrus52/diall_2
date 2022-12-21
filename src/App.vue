@@ -17,6 +17,9 @@
         },
         components: {
             Layout
+        },
+        mounted() {
+
         }
     }
 </script>

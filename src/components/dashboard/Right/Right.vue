@@ -1,10 +1,10 @@
 <template>
     <v-navigation-drawer
+
             v-model="rightDrawer"
             right
-            width="580"
+            width="400"
             dark
-            absolute
             app
     >
         <v-list-item style="height: 75px">

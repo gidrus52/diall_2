@@ -6,6 +6,7 @@
             dark
             left
             app
+            permanent
     >
         <v-list-item style="height: 75px">
             <v-list-item-avatar>

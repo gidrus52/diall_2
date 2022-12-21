@@ -8,13 +8,13 @@
             shrink-on-scroll
             class=""
     >
-        <v-container class="flex d-flex flex-row align-center justify-center">
+        <v-container class="flex d-flex flex-row align-start justify-start">
             <v-row class="flex d-flex flex-row align-center justify-space-between">
-                <v-col class="col-xl-2 text-black">
+                <v-col cols="2" class="col-xl-2 text-black">
                     {{displayName}}
                 </v-col>
 
-                <v-col class="col-xl-1">
+                <v-col cols="1" class="col-xl-1">
                     <v-icon color="grey">mdi-menu</v-icon>
                 </v-col>
                 <v-col class="flex d-flex justify-start">

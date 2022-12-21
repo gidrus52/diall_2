@@ -1,8 +1,8 @@
 <template>
-    <v-container class="ml-8">
+    <v-container fluid class="">
         <v-row class="d-flex  flex-row align-start justify-start ">
             <Card v-for="item in projectItem" :projectItem="item" class=""/>
-            <v-col>
+            <v-col cols="1" class="flex d-flex flex-column align-start justify-start">
                 <Button v-for="item in buttonsName" :buttonName="item"/>
             </v-col>
         </v-row>
